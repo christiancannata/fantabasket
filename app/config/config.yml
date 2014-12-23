@@ -74,10 +74,14 @@ swiftmailer:
 
 
 hwi_oauth:
+    firewall_name:         secured_area
     resource_owners:
-        any_name:
-            type:                facebook
-            client_id:           <client_id>
-            client_secret:       <client_secret>
-            options:
-                display: popup #dialog is optimized for popup window
+        facebook:
+            type:          facebook
+            client_id:     <client_id>
+            client_secret: <client_secret>
+            scope:         "email"
+
+services:
+    hwi_oauth.user.provider.entity:
+        class: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider

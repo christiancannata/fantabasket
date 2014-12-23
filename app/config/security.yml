@@ -45,6 +45,20 @@ security:
             #http_basic:
             #    realm: "Secured Demo Area"
 
+        secured_area:
+                pattern:    ^/demo/secured/
+                oauth:
+                    resource_owners:
+                        facebook:      /demo/secured/login_facebook
+                    login_path:        /demo/secured/login
+                    failure_path:      /demo/secured/login
+                    oauth_user_provider:
+                        service: hwi_oauth.user.provider.entity
+
+                # Turn on anonymous for testings need.
+                anonymous: ~
+
+
     # with these settings you can restrict or allow access for different parts
     # of your application based on roles, ip, host or methods
     # http://symfony.com/doc/current/book/security.html#security-book-access-control-matching-options
