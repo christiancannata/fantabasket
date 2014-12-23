@@ -68,57 +68,57 @@ section:after { clear: both; content: ""; display: block; height: 0; }
 
 .bg-00 {
 	height: 100%;
-	background: url('../img/header-bg.jpg') center top no-repeat fixed;
+	background: url('../images/header-bg.jpg') center top no-repeat fixed;
 	background-size: cover;
 }
 .bg-01 {
 	height: 100%;
-	background: url('../img/bg-01.jpg') center top no-repeat;
+	background: url('../images/bg-01.jpg') center top no-repeat;
 	background-size: cover;
 }
 .bg-02 {
 	height: 100%;
-	background: #fff url('../img/bg-02.jpg') center top no-repeat;
+	background: #fff url('../images/bg-02.jpg') center top no-repeat;
 	background-size: cover;
 }
 .bg-03 {
 	height: 100%;
-	background: #fff url('../img/bg-03.jpg') center top no-repeat;
+	background: #fff url('../images/bg-03.jpg') center top no-repeat;
 	background-size: cover;
 }
 .bg-04 {
 	height: 100%;
-	background: #fff url('../img/bg-04.jpg') center top no-repeat;
+	background: #fff url('../images/bg-04.jpg') center top no-repeat;
 	background-size: cover;
 }
 .bg-05 {
 	height: 100%;
-	background: #fff url('../img/bg-05.jpg') left top no-repeat;
+	background: #fff url('../images/bg-05.jpg') left top no-repeat;
 	background-size: cover;
 }
 .bg-06 {
 	height: 100%;
-	background: #fff url('../img/bg-06.jpg') left top no-repeat;
+	background: #fff url('../images/bg-06.jpg') left top no-repeat;
 	background-size: cover;
 }
 .bg-07 {
 	height: 100%;
-	background: #fff url('../img/bg-07.jpg') left top no-repeat;
+	background: #fff url('../images/bg-07.jpg') left top no-repeat;
 	background-size: cover;
 }
 .bg-08 {
 	height: 100%;
-	background: #fff url('../img/bg-08.jpg') left top no-repeat;
+	background: #fff url('../images/bg-08.jpg') left top no-repeat;
 	background-size: cover;
 }
 .bg-09 {
 	height: 100%;
-	background: #fff url('../img/bg-price.jpg') left top no-repeat fixed;
+	background: #fff url('../images/bg-price.jpg') left top no-repeat fixed;
 	background-size: cover;
 }
 .bg-10 {
 	height: 100%;
-	background: #fff url('../img/bg-10.jpg') left top no-repeat fixed;
+	background: #fff url('../images/bg-10.jpg') left top no-repeat fixed;
 	background-size: cover;
 }
 /*  MODULES  ============================================================================= */
@@ -282,7 +282,7 @@ footer .module-content {
 /*  HEADER   ============================================================================= */
 header {
 
-	background: url('../img/header-bg.jpg') center top no-repeat fixed;
+	background: url('../images/header-bg.jpg') center top no-repeat fixed;
 	background-size: cover;
 	text-align: center;
 	border-bottom: 5px solid rgba(0,0,0,0.4);

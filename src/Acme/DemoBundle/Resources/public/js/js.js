@@ -121,15 +121,6 @@ $(document).ready(function($) {
 		StickyNav();
 	});
 
-//Carousel
-	$(".owl-carousel").owlCarousel();
-
- 	var owl = $(".owl-carousel");
- 
-	owl.owlCarousel({
-	transitionStyle : "fade"
-	});
-
 //Countdown
  $('[data-countdown]').each(function() {
      var $this = $(this), finalDate = $(this).data('countdown');
@@ -150,9 +141,5 @@ $(document).ready(function($) {
      });
 });
 
-  fluidvids.init({
- 		 selector: 'iframe', // runs querySelectorAll()
- 		 players: ['www.youtube.com', 'player.vimeo.com'] // players to support
-	});
 });					
 
