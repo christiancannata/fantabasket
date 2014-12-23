@@ -122,13 +122,13 @@ $(document).ready(function($) {
 	});
 
 //Carousel
-	$(".owl-carousel").owlCarousel();
+	//$(".owl-carousel").owlCarousel();
 
- 	var owl = $(".owl-carousel");
+ //	var owl = $(".owl-carousel");
  
-	owl.owlCarousel({
-	transitionStyle : "fade"
-	});
+	//owl.owlCarousel({
+	//transitionStyle : "fade"
+	//});
 
 //Countdown
  $('[data-countdown]').each(function() {
