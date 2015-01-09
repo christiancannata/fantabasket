@@ -23,13 +23,44 @@ class DemoController extends Controller
     }
 
     /**
-     * @Route("/tua-squadra", name="_demo_hello")
+     * @Route("/nuova-squadra", name="_demo_nuova_squadra")
+     * @Template()
+     */
+    public function nuovaSquadraAction()
+    {
+        return array();
+    }
+
+
+    /**
+     * @Route("/nuova-formazione", name="_demo_formazione")
+     * @Template()
+     */
+    public function nuovaFormazioneAction()
+    {
+        return array();
+    }
+
+
+    /**
+     * @Route("/tua-squadra", name="_demo_squadra")
      * @Template()
      */
     public function tuaSquadraAction()
     {
         return array();
     }
+
+
+    /**
+     * @Route("/tuoi-campionati", name="_demo_campionati")
+     * @Template()
+     */
+    public function tuoiCampionatiAction()
+    {
+        return array();
+    }
+
 
     /**
      * @Route("/contact", name="_demo_contact")

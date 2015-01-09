@@ -1003,7 +1003,9 @@ body:not(.mobile) #stickynav{
 	background: #3f444a;
 }
 .table-scores a {
-	color: #E7BF3A!important;
+	color: #E7BF3A important;
+	margin-top:0px;
+
 }
 .table-scores thead tr td {
 	background: #14161b;
