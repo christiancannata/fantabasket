@@ -93,8 +93,8 @@ hwi_oauth:
     resource_owners:
         facebook:
             type:                facebook
-            client_id:           <client_id>
-            client_secret:       <client_secret>
+            client_id:           575810985813680
+            client_secret:       05917e0ff22500a2670f8a1629d8cec3
             options:
                 display: popup #dialog is optimized for popup window
     fosub:
