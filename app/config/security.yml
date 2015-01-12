@@ -9,9 +9,9 @@ security:
             pattern: ^/
 
             oauth:
-                failure_path: /login
-                login_path: /login
-                check_path: /login
+                failure_path: /secure_area/connect
+                login_path: /secure_area/connect
+                check_path: /secure_area/connect
                 provider: fos_userbundle
                 resource_owners:
                     facebook:           "/secure_area/login/check-facebook"
@@ -20,9 +20,12 @@ security:
 
             anonymous:    true
             logout:
-                path:           /logout
-                target:         / #where to go after logout
+                path:           /secure_area/logout
+                target:         /secure_area/connect #where to go after logout
 
 
     access_control:
-        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/secure_area/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/secure_area/connect, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/secure_area, roles: ROLE_USER }
+
