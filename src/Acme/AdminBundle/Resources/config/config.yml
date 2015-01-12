@@ -1,0 +1,41 @@
+sonata_block:
+    default_contexts: [cms]
+    blocks: 
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+        sonata.block.service.text:
+        sonata.block.service.rss:
+        sonata.admin.block.search_result:
+
+sonata_admin:
+    title: Adsl Admin
+    security:
+        handler: sonata.admin.security.handler.role
+    dashboard:
+        blocks:
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [admin]
+        groups:
+            admin:
+                label: Setup
+                items: [sonata.admin.anagraficaLead, sonata.admin.compagnia,sonata.admin.tariffa,sonata.admin.sorgente, sonata.admin.paginaseo]
+                roles: [ ROLE_SONATA_ADMIN, ROLE_ADMIN ]
+    templates:
+        search_result_block: SonataAdminBundle:Block:block_search_result.html.twig
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Facile\Adsl\AdminBundle\Entity\User
+    group:
+        group_class: Facile\Adsl\AdminBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager 
+    service:
+        user_manager: sonata.user.orm.user_manager
+
+sonata_intl:
+    timezone:
+        default: Europe/Paris
