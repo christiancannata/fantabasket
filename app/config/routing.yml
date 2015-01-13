@@ -34,18 +34,24 @@ _sonata_admin:
     prefix: /admin
 
 
-hwi_oauth_redirect:
-    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
-    prefix:   /secure_area/connect
+
+
+
+hwi_oauth_service_redirect:
+    defaults: { _controller: AcmeDemoBundle:Secured:redirectToService }
+    pattern:   /secure_area/connect/{service}
 
 hwi_oauth_login:
     resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
     prefix:   /secure_area/connect
 
-hwi_oauth_connect:
-    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
-    prefix:   /secure_area/connect
+hwi_oauth_connect_service:
+    defaults: { _controller: AcmeDemoBundle:Secured:connectService }
+    pattern:   /secure_area/connect/service/{service}
 
+hwi_oauth_connect_registration:
+    defaults: { _controller: AcmeDemoBundle:Secured:registration }
+    pattern:   /secure_area/connect/registration/{key}
 
 facebook_login:
     pattern: /secure_area/login/check-facebook
