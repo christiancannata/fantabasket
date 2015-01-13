@@ -14,7 +14,18 @@
                 tempora
                 alias libero quaerat beatae pariatur odit recusandae voluptas autem totam similique corrupti ex corporis
                 distinctio.</p>
-            <a href="#" class="button yellow-bg">Watch our video</a>
+
+            <form action="{{ path("fos_user_security_check") }}" method="post">
+                <label>Email</label>
+                <input type="text" name="_username" required="required" />
+
+                <label>Password</label>
+                <input type="password" name="_password" required="required" />
+                <input type="hidden" name="_csrf_token" value="{{ fos_csrf_provider.generateCsrfToken('authenticate') }}" />
+                <button type="submit">Submit</button>
+            </form>
+
+            <a class="button green-bg" href="http://local.fantabasket.it/web/app_dev.php/secure_area/connect/facebook">facebook</a>
         </div>
 
     {% endblock %}
