@@ -111,7 +111,7 @@ class SecuredController extends ConnectController {
 			$this->authenticateUser( $request, $form->getData(), $error->getResourceOwnerName(),
 				$error->getRawToken() );
 
-			return $this->container->get( 'templating' )->renderResponse( 'HWIOAuthBundle:Connect:registration_success.html.' . $this->getTemplatingEngine(),
+			return $this->container->get( 'templating' )->renderResponse( 'AcmeDemoBundle:Demo:connessione-effettuata.html.' . $this->getTemplatingEngine(),
 				array(
 					'userInformation' => $userInformation,
 				) );
@@ -121,7 +121,7 @@ class SecuredController extends ConnectController {
 		$key = time();
 		$session->set( '_hwi_oauth.registration_error.' . $key, $error );
 
-		return $this->container->get( 'templating' )->renderResponse( 'HWIOAuthBundle:Connect:registration.html.' . $this->getTemplatingEngine(),
+		return $this->container->get( 'templating' )->renderResponse( 'AcmeDemoBundle:Demo:registrati.html.' . $this->getTemplatingEngine(),
 			array(
 				'key'             => $key,
 				'form'            => $form->createView(),
@@ -201,152 +201,19 @@ class SecuredController extends ConnectController {
 					$this->authenticateUser( $request, $currentUser, $service, $currentToken->getRawToken(), false );
 				}
 
-				return $this->container->get( 'templating' )->renderResponse( 'HWIOAuthBundle:Connect:connect_success.html.' . $this->getTemplatingEngine(),
+				return $this->container->get( 'templating' )->renderResponse( 'AcmeDemoBundle:Demo:connessione-effettuata.html.' . $this->getTemplatingEngine(),
 					array(
 						'userInformation' => $userInformation,
 					) );
 			}
 		}
 
-		return $this->container->get( 'templating' )->renderResponse( 'HWIOAuthBundle:Connect:connect_confirm.html.' . $this->getTemplatingEngine(),
+		return $this->container->get( 'templating' )->renderResponse( 'AcmeDemoBundle:Demo:conferma-iscrizione.html.' . $this->getTemplatingEngine(),
 			array(
 				'key'             => $key,
 				'service'         => $service,
 				'form'            => $form->createView(),
 				'userInformation' => $userInformation,
 			) );
-	}
-
-	/**
-	 * @param Request $request
-	 * @param string $service
-	 *
-	 * @return RedirectResponse
-	 */
-	public function redirectToServiceAction( Request $request, $service ) {
-		$authorizationUrl = $this->container->get( 'hwi_oauth.security.oauth_utils' )->getAuthorizationUrl( $request,
-			$service );
-
-		// Check for a return path and store it before redirect
-		if ( $request->hasSession() ) {
-			// initialize the session for preventing SessionUnavailableException
-			$session = $request->getSession();
-			$session->start();
-
-			$providerKey = $this->container->getParameter( 'hwi_oauth.firewall_name' );
-			$sessionKey  = '_security.' . $providerKey . '.target_path';
-
-			$param = $this->container->getParameter( 'hwi_oauth.target_path_parameter' );
-			if ( ! empty( $param ) && $targetUrl = $request->get( $param, null, true ) ) {
-				$session->set( $sessionKey, $targetUrl );
-			}
-
-			if ( $this->container->getParameter( 'hwi_oauth.use_referer' ) && ! $session->has( $sessionKey ) && ( $targetUrl = $request->headers->get( 'Referer' ) ) && $targetUrl !== $authorizationUrl ) {
-				$session->set( $sessionKey, $targetUrl );
-			}
-		}
-
-		return new RedirectResponse( $authorizationUrl );
-	}
-
-	/**
-	 * Get the security error for a given request.
-	 *
-	 * @param Request $request
-	 *
-	 * @return string|\Exception
-	 */
-	protected function getErrorForRequest( Request $request ) {
-		$session = $request->getSession();
-		if ( $request->attributes->has( SecurityContext::AUTHENTICATION_ERROR ) ) {
-			$error = $request->attributes->get( SecurityContext::AUTHENTICATION_ERROR );
-		} elseif ( null !== $session && $session->has( SecurityContext::AUTHENTICATION_ERROR ) ) {
-			$error = $session->get( SecurityContext::AUTHENTICATION_ERROR );
-			$session->remove( SecurityContext::AUTHENTICATION_ERROR );
-		} else {
-			$error = '';
-		}
-
-		return $error;
-	}
-
-	/**
-	 * Get a resource owner by name.
-	 *
-	 * @param string $name
-	 *
-	 * @return ResourceOwnerInterface
-	 *
-	 * @throws \RuntimeException if there is no resource owner with the given name.
-	 */
-	protected function getResourceOwnerByName( $name ) {
-		$ownerMap = $this->container->get( 'hwi_oauth.resource_ownermap.' . $this->container->getParameter( 'hwi_oauth.firewall_name' ) );
-
-		if ( null === $resourceOwner = $ownerMap->getResourceOwnerByName( $name ) ) {
-			throw new \RuntimeException( sprintf( "No resource owner with name '%s'.", $name ) );
-		}
-
-		return $resourceOwner;
-	}
-
-	/**
-	 * Generates a route.
-	 *
-	 * @param string $route Route name
-	 * @param array $params Route parameters
-	 * @param boolean $absolute Absolute url or note.
-	 *
-	 * @return string
-	 */
-	protected function generate( $route, $params = array(), $absolute = false ) {
-		return $this->container->get( 'router' )->generate( $route, $params, $absolute );
-	}
-
-	/**
-	 * Authenticate a user with Symfony Security
-	 *
-	 * @param Request $request
-	 * @param UserInterface $user
-	 * @param string $resourceOwnerName
-	 * @param string $accessToken
-	 * @param boolean $fakeLogin
-	 */
-	protected function authenticateUser(
-		Request $request,
-		UserInterface $user,
-		$resourceOwnerName,
-		$accessToken,
-		$fakeLogin = true
-	) {
-		try {
-			$this->container->get( 'hwi_oauth.user_checker' )->checkPostAuth( $user );
-		} catch ( AccountStatusException $e ) {
-			// Don't authenticate locked, disabled or expired users
-			return;
-		}
-
-		$token = new OAuthToken( $accessToken, $user->getRoles() );
-		$token->setResourceOwnerName( $resourceOwnerName );
-		$token->setUser( $user );
-		$token->setAuthenticated( true );
-
-		$this->container->get( 'security.context' )->setToken( $token );
-
-		if ( $fakeLogin ) {
-			// Since we're "faking" normal login, we need to throw our INTERACTIVE_LOGIN event manually
-			$this->container->get( 'event_dispatcher' )->dispatch(
-				SecurityEvents::INTERACTIVE_LOGIN,
-				new InteractiveLoginEvent( $request, $token )
-			);
-		}
-	}
-
-	/**
-	 * Returns templating engine name.
-	 *
-	 * @return string
-	 */
-	protected function getTemplatingEngine() {
-		return $this->container->getParameter( 'hwi_oauth.templating.engine' );
 	}
 }

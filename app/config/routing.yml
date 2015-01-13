@@ -8,9 +8,21 @@ fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
     prefix: /secure_area/profile
 
-fos_user_register:
-    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
-    prefix: /secure_area/register
+fos_user_registration_register:
+    defaults: { _controller: AcmeDemoBundle:Registration:register }
+    pattern:   /secure_area/register
+
+fos_user_registration_check_email:
+    defaults: { _controller: AcmeDemoBundle:Registration:checkEmail }
+    pattern:   /secure_area/register/check-email
+
+fos_user_registration_confirm:
+    defaults: { _controller: AcmeDemoBundle:Registration:checkEmail }
+    pattern:   /secure_area/register/confirm/{token}
+
+fos_user_registration_confirmed:
+    defaults: { _controller: AcmeDemoBundle:Registration:confirmed }
+    pattern:   /secure_area/register/confirmed
 
 fos_user_resetting:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
