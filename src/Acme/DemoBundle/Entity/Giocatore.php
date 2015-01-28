@@ -39,14 +39,12 @@ class Giocatore
 	 */
 	private $prezzo;
 
-
-
-
 	/**
-	 * @ORM\OneToOne(targetEntity="SquadraReale")
-	 * @ORM\JoinColumn(name="id_squadra_reale", referencedColumnName="id")
+	 *  @ORM\ManyToOne(targetEntity="SquadraReale", inversedBy="giocatori")
+	 *  @ORM\JoinColumn(name="id_squadra_reale", referencedColumnName="id")
 	 **/
 	private $squadraReale;
+
 
 	public function __construct()
 	{

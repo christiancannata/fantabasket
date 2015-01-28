@@ -106,14 +106,3 @@ hwi_oauth:
         # mapping between resource owners (see below) and properties
         properties:
             facebook: facebookID
-sonata_block:
-    default_contexts: [cms]
-    blocks:
-        # Enable the SonataAdminBundle block
-        sonata.admin.block.admin_list:
-            contexts:   [admin]
-        # Your other blocks
-
-sonata_admin:
-    title:      Acme Demo Bundle
-    title_logo: bundles/acmedemo/img/fancy_acme_logo.png

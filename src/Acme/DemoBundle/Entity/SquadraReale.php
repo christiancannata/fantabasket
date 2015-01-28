@@ -25,12 +25,13 @@ class SquadraReale
 	private $nome;
 
 
+	/**
+	 *  @ORM\OneToMany(targetEntity="Giocatore", mappedBy="id_squadra_reale")
+	 **/
+	private $giocatori;
 
-
-	public function __construct()
-	{
-		parent::__construct();
-		// your own logic
+	public function __construct() {
+		$this->giocatori = new ArrayCollection();
 	}
 
 	/**
@@ -59,6 +60,14 @@ class SquadraReale
 	public function setNome( $nome ) {
 		$this->nome = $nome;
 	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getGiocatori() {
+		return $this->giocatori;
+	}
+
 
 
 }

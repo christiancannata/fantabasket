@@ -40,6 +40,12 @@ class Squadra
 	private $lastUpdateTimestamp;
 
 
+	/**
+	 *  @ORM\ManyToOne(targetEntity="User", inversedBy="squadre")
+	 *  @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+	 **/
+	private $utente;
+
 
 	public function __construct()
 	{
@@ -72,6 +78,48 @@ class Squadra
 	 */
 	public function setNome( $nome ) {
 		$this->nome = $nome;
+	}
+
+	/**
+	 * @return \DateTime
+	 */
+	public function getTimestamp() {
+		return $this->timestamp;
+	}
+
+	/**
+	 * @param \DateTime $timestamp
+	 */
+	public function setTimestamp( $timestamp ) {
+		$this->timestamp = $timestamp;
+	}
+
+	/**
+	 * @return \DateTime
+	 */
+	public function getLastUpdateTimestamp() {
+		return $this->lastUpdateTimestamp;
+	}
+
+	/**
+	 * @param \DateTime $lastUpdateTimestamp
+	 */
+	public function setLastUpdateTimestamp( $lastUpdateTimestamp ) {
+		$this->lastUpdateTimestamp = $lastUpdateTimestamp;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getUtente() {
+		return $this->utente;
+	}
+
+	/**
+	 * @param mixed $utente
+	 */
+	public function setUtente( $utente ) {
+		$this->utente = $utente;
 	}
 
 

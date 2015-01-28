@@ -4,7 +4,7 @@ namespace Acme\DemoBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  * @ORM\Entity
  * @ORM\Table(name="users")
@@ -40,10 +40,16 @@ class User extends BaseUser
 	 */
 	private $cognome;
 
+
+	/**
+	 *  @ORM\OneToMany(targetEntity="Squadra", mappedBy="id_user")
+	 **/
+	private $squadre;
+
 	public function __construct()
 	{
 		parent::__construct();
-		// your own logic
+		$this->squadre = new ArrayCollection();
 	}
 
 	/**
