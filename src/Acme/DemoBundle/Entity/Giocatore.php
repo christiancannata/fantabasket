@@ -2,14 +2,13 @@
 
 namespace Acme\DemoBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="users")
+ * @ORM\Table(name="giocatore")
  */
-class User extends BaseUser
+class Giocatore
 {
 	/**
 	 * @ORM\Id
@@ -21,17 +20,10 @@ class User extends BaseUser
 	/**
 	 * @var string
 	 *
-	 * @ORM\Column(name="facebook_id", type="string", nullable=true)
-	 */
-	private $facebookID;
-
-
-	/**
-	 * @var string
-	 *
 	 * @ORM\Column(name="nome", type="string", nullable=true)
 	 */
 	private $nome;
+
 
 	/**
 	 * @var string
@@ -39,6 +31,22 @@ class User extends BaseUser
 	 * @ORM\Column(name="cognome", type="string", nullable=true)
 	 */
 	private $cognome;
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="prezzo", type="integer", nullable=true)
+	 */
+	private $prezzo;
+
+
+
+
+	/**
+	 * @ORM\OneToOne(targetEntity="SquadraReale")
+	 * @ORM\JoinColumn(name="id_squadra_reale", referencedColumnName="id")
+	 **/
+	private $squadraReale;
 
 	public function __construct()
 	{
@@ -57,28 +65,6 @@ class User extends BaseUser
 	}
 
 
-    /**
-     * Set githubID
-     *
-     * @param string $githubID
-     * @return User
-     */
-    public function setFacebookID($githubID)
-    {
-        $this->facebookID = $githubID;
-
-        return $this;
-    }
-
-    /**
-     * Get githubID
-     *
-     * @return string 
-     */
-    public function getFacebookID()
-    {
-        return $this->facebookID;
-    }
 
 	/**
 	 * @return string
@@ -107,5 +93,35 @@ class User extends BaseUser
 	public function setNome( $nome ) {
 		$this->nome = $nome;
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getPrezzo() {
+		return $this->prezzo;
+	}
+
+	/**
+	 * @param string $prezzo
+	 */
+	public function setPrezzo( $prezzo ) {
+		$this->prezzo = $prezzo;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getSquadraReale() {
+		return $this->squadraReale;
+	}
+
+	/**
+	 * @param mixed $squadraReale
+	 */
+	public function setSquadraReale( $squadraReale ) {
+		$this->squadraReale = $squadraReale;
+	}
+
+
 
 }
