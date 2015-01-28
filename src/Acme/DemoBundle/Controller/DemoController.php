@@ -28,7 +28,10 @@ class DemoController extends Controller
      */
     public function nuovaSquadraAction()
     {
-        return array();
+        $repository = $this->container->get('doctrine')
+                           ->getRepository('AcmeDemoBundle:Giocatore');
+        $giocatori= $repository->findAll();
+        return array("giocatori"=>$giocatori);
     }
 
 

@@ -46,6 +46,14 @@ class Giocatore
 	private $squadraReale;
 
 
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="ruolo", type="string",  columnDefinition="ENUM('A','B','C','D') " ,nullable=false)
+	 */
+	private $tipo;
+
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -118,6 +126,20 @@ class Giocatore
 	 */
 	public function setSquadraReale( $squadraReale ) {
 		$this->squadraReale = $squadraReale;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getTipo() {
+		return $this->tipo;
+	}
+
+	/**
+	 * @param string $tipo
+	 */
+	public function setTipo( $tipo ) {
+		$this->tipo = $tipo;
 	}
 
 
