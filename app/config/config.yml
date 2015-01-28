@@ -81,7 +81,8 @@ fos_user:
     registration:
         confirmation:
             enabled:    false # change to true for required email confirmation
-
+        form:
+            type: acme_user_registration
 
 hwi_oauth:
     # name of the firewall in which this bundle is active, this setting MUST be set
