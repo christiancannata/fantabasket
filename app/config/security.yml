@@ -27,5 +27,5 @@ security:
     access_control:
         - { path: ^/secure_area/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/secure_area/connect, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/secure_area, roles: ROLE_USER }
+        - { path: ^/fantabasket, roles: ROLE_USER }
 

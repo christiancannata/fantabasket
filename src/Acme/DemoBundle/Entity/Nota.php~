@@ -1,0 +1,42 @@
+<?php
+
+namespace Acme\DemoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Nota
+ *
+ * @ORM\Table(name="Nota", indexes={@ORM\Index(name="fk_Nota_Squadra1_idx", columns={"id_squadra"})})
+ * @ORM\Entity
+ */
+class Nota
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="testo", type="text", length=65535, nullable=true)
+     */
+    private $testo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Acme\DemoBundle\Entity\Squadra
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\DemoBundle\Entity\Squadra")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_squadra", referencedColumnName="id")
+     * })
+     */
+    private $idSquadra;
+
+
+}

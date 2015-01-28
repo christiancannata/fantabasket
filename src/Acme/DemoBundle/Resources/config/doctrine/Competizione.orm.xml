@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Acme\DemoBundle\Entity\Competizione" table="Competizione">
+    <indexes>
+      <index name="fk_Competizione_Utente1_idx" columns="id_utente"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="statoAttuale" type="string" column="stato_attuale" length="45" nullable="true"/>
+    <many-to-one field="idUtente" target-entity="Utente">
+      <join-columns>
+        <join-column name="id_utente" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

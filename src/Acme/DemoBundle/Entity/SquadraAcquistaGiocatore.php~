@@ -1,0 +1,52 @@
+<?php
+
+namespace Acme\DemoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SquadraAcquistaGiocatore
+ *
+ * @ORM\Table(name="Squadra_acquista_Giocatore", indexes={@ORM\Index(name="fk_Squadra_has_Giocatore_Giocatore1_idx", columns={"id_giocatore"}), @ORM\Index(name="fk_Squadra_has_Giocatore_Squadra1_idx", columns={"id_squadra"})})
+ * @ORM\Entity
+ */
+class SquadraAcquistaGiocatore
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="prezzo", type="integer", nullable=true)
+     */
+    private $prezzo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Acme\DemoBundle\Entity\Squadra
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\DemoBundle\Entity\Squadra")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_squadra", referencedColumnName="id")
+     * })
+     */
+    private $idSquadra;
+
+    /**
+     * @var \Acme\DemoBundle\Entity\Giocatore
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\DemoBundle\Entity\Giocatore")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_giocatore", referencedColumnName="id")
+     * })
+     */
+    private $idGiocatore;
+
+
+}

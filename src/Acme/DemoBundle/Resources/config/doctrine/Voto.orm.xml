@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Acme\DemoBundle\Entity\Voto" table="Voto">
+    <indexes>
+      <index name="fk_Voto_Giocatore1_idx" columns="id_giocatore"/>
+    </indexes>
+    <id name="id" type="integer" column="id"/>
+    <id name="idGiocatore" association-key="true"/>
+    <one-to-one field="idGiocatore" target-entity="Giocatore">
+      <join-columns>
+        <join-column name="id_giocatore" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

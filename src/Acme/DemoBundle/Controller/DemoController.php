@@ -23,7 +23,6 @@ class DemoController extends Controller
     }
 
     /**
-     * @Route("/nuova-squadra", name="_demo_nuova_squadra")
      * @Template()
      */
     public function nuovaSquadraAction()
@@ -33,7 +32,6 @@ class DemoController extends Controller
 
 
     /**
-     * @Route("/nuova-formazione", name="_demo_formazione")
      * @Template()
      */
     public function nuovaFormazioneAction()
@@ -43,7 +41,6 @@ class DemoController extends Controller
 
 
     /**
-     * @Route("/tua-squadra", name="_demo_squadra")
      * @Template()
      */
     public function tuaSquadraAction()
@@ -53,7 +50,6 @@ class DemoController extends Controller
 
 
     /**
-     * @Route("/tuoi-campionati", name="_demo_campionati")
      * @Template()
      */
     public function tuoiCampionatiAction()

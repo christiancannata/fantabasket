@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Acme\DemoBundle\Entity\Giornata" table="Giornata">
+    <indexes>
+      <index name="fk_Giornata_Girone1_idx" columns="id_girone"/>
+    </indexes>
+    <id name="id" type="integer" column="id"/>
+    <id name="idGirone" association-key="true"/>
+    <field name="numero" type="integer" column="numero" nullable="true"/>
+    <one-to-one field="idGirone" target-entity="Girone">
+      <join-columns>
+        <join-column name="id_girone" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
+    <many-to-many field="squadra" target-entity="Squadra" inversed-by="giornata">
+      <join-table name="giornata_has_squadra">
+        <join-columns>
+          <join-column name="Giornata_id" referenced-column-name="id"/>
+          <join-column name="Giornata_Girone_id" referenced-column-name="id_girone"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="Squadra_id" referenced-column-name="id"/>
+          <join-column name="Squadra_Utente_id" referenced-column-name="id_utente"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

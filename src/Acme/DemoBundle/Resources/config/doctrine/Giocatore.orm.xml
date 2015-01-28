@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Acme\DemoBundle\Entity\Giocatore" table="Giocatore">
+    <indexes>
+      <index name="fk_Giocatore_Squadra_reale1_idx" columns="id_squadra_reale"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nome" type="string" column="nome" length="225" nullable="true"/>
+    <field name="cognome" type="string" column="cognome" length="225" nullable="true"/>
+    <field name="crediti" type="integer" column="crediti" nullable="true"/>
+    <many-to-one field="idSquadraReale" target-entity="SquadraReale">
+      <join-columns>
+        <join-column name="id_squadra_reale" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

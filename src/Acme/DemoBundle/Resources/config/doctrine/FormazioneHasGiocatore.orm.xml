@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Acme\DemoBundle\Entity\FormazioneHasGiocatore" table="Formazione_has_Giocatore">
+    <indexes>
+      <index name="fk_Formazione_has_Giocatore_Giocatore1_idx" columns="id_giocatore"/>
+      <index name="fk_Formazione_has_Giocatore_Formazione1_idx" columns="id_formazione"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="idGiocatore" target-entity="Giocatore">
+      <join-columns>
+        <join-column name="id_giocatore" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idFormazione" target-entity="Formazione">
+      <join-columns>
+        <join-column name="id_formazione" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

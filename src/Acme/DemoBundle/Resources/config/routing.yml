@@ -1,4 +1,20 @@
 _demo:
     resource: "@AcmeDemoBundle/Controller/DemoController.php"
     type:     annotation
-    prefix:   /
+    prefix:   /fantabasket
+
+fantabasket_nuova_squadra:
+    defaults: { _controller: AcmeDemoBundle:Demo:nuovaSquadra }
+    pattern:   /fantabasket/nuova-squadra
+
+fantabasket_nuova_formazione:
+    defaults: { _controller: AcmeDemoBundle:Demo:nuovaFormazione }
+    pattern:   /fantabasket/nuova-formazione
+
+fantabasket_tua_squadra:
+    defaults: { _controller: AcmeDemoBundle:Demo:tuaSquadra }
+    pattern:   /fantabasket/gestione-squadra
+
+fantabasket_gestione_campionati:
+    defaults: { _controller: AcmeDemoBundle:Demo:tuoiCampionati }
+    pattern:   /fantabasket/gestione-campionati

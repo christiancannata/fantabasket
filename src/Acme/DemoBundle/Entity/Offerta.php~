@@ -1,0 +1,55 @@
+<?php
+
+namespace Acme\DemoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Offerta
+ *
+ * @ORM\Table(name="Offerta", indexes={@ORM\Index(name="fk_Competizione_has_Giocatore_Giocatore1_idx", columns={"id_giocatore"}), @ORM\Index(name="fk_Competizione_has_Giocatore_Competizione1_idx", columns={"id_competizione"}), @ORM\Index(name="fk_Offerta_Squadra1_idx", columns={"id_squadra"})})
+ * @ORM\Entity
+ */
+class Offerta
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Acme\DemoBundle\Entity\Squadra
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\DemoBundle\Entity\Squadra")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_squadra", referencedColumnName="id")
+     * })
+     */
+    private $idSquadra;
+
+    /**
+     * @var \Acme\DemoBundle\Entity\Giocatore
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\DemoBundle\Entity\Giocatore")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_giocatore", referencedColumnName="id")
+     * })
+     */
+    private $idGiocatore;
+
+    /**
+     * @var \Acme\DemoBundle\Entity\Competizione
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\DemoBundle\Entity\Competizione")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_competizione", referencedColumnName="id")
+     * })
+     */
+    private $idCompetizione;
+
+
+}

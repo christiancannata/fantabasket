@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Acme\DemoBundle\Entity\SquadraVendeGiocatore" table="Squadra_vende_Giocatore">
+    <indexes>
+      <index name="fk_Squadra_has_Giocatore_Giocatore1_idx" columns="id_giocatore"/>
+      <index name="fk_Squadra_has_Giocatore_Squadra1_idx" columns="id_squadra"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="prezzo" type="integer" column="prezzo" nullable="true"/>
+    <many-to-one field="idSquadra" target-entity="Squadra">
+      <join-columns>
+        <join-column name="id_squadra" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idGiocatore" target-entity="Giocatore">
+      <join-columns>
+        <join-column name="id_giocatore" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

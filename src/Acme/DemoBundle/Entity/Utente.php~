@@ -1,0 +1,39 @@
+<?php
+
+namespace Acme\DemoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Utente
+ *
+ * @ORM\Table(name="Utente")
+ * @ORM\Entity
+ */
+class Utente
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=225, nullable=true)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cognome", type="string", length=225, nullable=true)
+     */
+    private $cognome;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}

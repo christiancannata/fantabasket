@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Acme\DemoBundle\Entity\GironeHasSquadra" table="Girone_has_Squadra">
+    <indexes>
+      <index name="fk_Girone_has_Squadra_Squadra1_idx" columns="id_squadra"/>
+      <index name="fk_Girone_has_Squadra_Girone1_idx" columns="id_girone"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="idSquadra" target-entity="Squadra">
+      <join-columns>
+        <join-column name="id_squadra" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idGirone" target-entity="Girone">
+      <join-columns>
+        <join-column name="id_girone" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

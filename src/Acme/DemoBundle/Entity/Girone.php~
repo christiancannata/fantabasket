@@ -1,0 +1,45 @@
+<?php
+
+namespace Acme\DemoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Girone
+ *
+ * @ORM\Table(name="Girone", indexes={@ORM\Index(name="fk_Girone_Torneo1_idx", columns={"id_torneo"}), @ORM\Index(name="fk_Girone_Competizione1_idx", columns={"id_competizione"})})
+ * @ORM\Entity
+ */
+class Girone
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Acme\DemoBundle\Entity\Torneo
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\DemoBundle\Entity\Torneo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_torneo", referencedColumnName="id")
+     * })
+     */
+    private $idTorneo;
+
+    /**
+     * @var \Acme\DemoBundle\Entity\Competizione
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\DemoBundle\Entity\Competizione")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_competizione", referencedColumnName="id")
+     * })
+     */
+    private $idCompetizione;
+
+
+}
