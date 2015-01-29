@@ -3,6 +3,9 @@
 namespace Acme\DemoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
+
 
 /**
  * @ORM\Entity
@@ -27,14 +30,16 @@ class Squadra
 
 	/**
 	 * @var \DateTime
-	 *
+	 * @Gedmo\Timestampable(on="create")
+	 * @Serializer\Type("DateTime")
 	 * @ORM\Column(name="timestamp", type="datetime", nullable=false)
 	 */
 	private $timestamp;
 
 	/**
 	 * @var \DateTime
-	 *
+	 * @Gedmo\Timestampable(on="update")
+	 * @Serializer\Type("DateTime")
 	 * @ORM\Column(name="last_update_timestamp", type="datetime", nullable=false)
 	 */
 	private $lastUpdateTimestamp;
