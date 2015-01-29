@@ -242,5 +242,19 @@ class Giocatore {
 		$this->avatar = $avatar;
 	}
 
+	/**
+	 * @return string
+	 */
+	public function getPrezzoIniziale() {
+		return $this->prezzoIniziale;
+	}
+
+	/**
+	 * @param string $prezzoIniziale
+	 */
+	public function setPrezzoIniziale( $prezzoIniziale ) {
+		$this->prezzoIniziale = $prezzoIniziale;
+	}
+
 
 }
