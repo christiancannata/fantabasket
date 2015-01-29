@@ -8,9 +8,9 @@ use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="partita")
+ * @ORM\Table(name="partita_reale")
  */
-class Partita {
+class PartitaReale {
 	/**
 	 * @ORM\Id
 	 * @ORM\Column(type="integer")
@@ -40,18 +40,17 @@ class Partita {
 
 
 	/**
-	 * @ORM\OneToOne(targetEntity="Formazione")
-	 * @ORM\JoinColumn(name="id_formazione_casa", referencedColumnName="id")
+	 * @ORM\OneToOne(targetEntity="SquadraReale")
+	 * @ORM\JoinColumn(name="id_squadra_casa", referencedColumnName="id")
 	 **/
-	private $formazioneCasa;
+	private $squadraCasa;
 
 
 	/**
-	 * @ORM\OneToOne(targetEntity="Formazione")
-	 * @ORM\JoinColumn(name="id_formazione_trasferta", referencedColumnName="id")
+	 * @ORM\OneToOne(targetEntity="SquadraReale")
+	 * @ORM\JoinColumn(name="id_squadra_trasferta", referencedColumnName="id")
 	 **/
-	private $formazioneTrasferta;
-
+	private $squadraTrasferta;
 
 
 	/**
@@ -69,7 +68,6 @@ class Partita {
 	 * @ORM\Column(name="last_update_timestamp", type="datetime", nullable=false)
 	 */
 	private $lastUpdateTimestamp;
-
 
 
 	public function __construct() {
@@ -108,6 +106,28 @@ class Partita {
 	}
 
 	/**
+	 * @param string $descrizione
+	 */
+	public function setDescrizione( $descrizione ) {
+		$this->descrizione = $descrizione;
+	}
+
+
+	/**
+	 * @return mixed
+	 */
+	public function getVotiAggiornati() {
+		return $this->votiAggiornati;
+	}
+
+	/**
+	 * @param mixed $votiAggiornati
+	 */
+	public function setVotiAggiornati( $votiAggiornati ) {
+		$this->votiAggiornati = $votiAggiornati;
+	}
+
+	/**
 	 * @return mixed
 	 */
 	public function getPuntiSquadraCasa() {
@@ -138,43 +158,29 @@ class Partita {
 	/**
 	 * @return mixed
 	 */
-	public function getVotiAggiornati() {
-		return $this->votiAggiornati;
+	public function getSquadraCasa() {
+		return $this->squadraCasa;
 	}
 
 	/**
-	 * @param mixed $votiAggiornati
+	 * @param mixed $squadraCasa
 	 */
-	public function setVotiAggiornati( $votiAggiornati ) {
-		$this->votiAggiornati = $votiAggiornati;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getFormazioneCasa() {
-		return $this->formazioneCasa;
-	}
-
-	/**
-	 * @param mixed $formazioneCasa
-	 */
-	public function setFormazioneCasa( $formazioneCasa ) {
-		$this->formazioneCasa = $formazioneCasa;
+	public function setSquadraCasa( $squadraCasa ) {
+		$this->squadraCasa = $squadraCasa;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function getFormazioneTrasferta() {
-		return $this->formazioneTrasferta;
+	public function getSquadraTrasferta() {
+		return $this->squadraTrasferta;
 	}
 
 	/**
-	 * @param mixed $formazioneTrasferta
+	 * @param mixed $squadraTrasferta
 	 */
-	public function setFormazioneTrasferta( $formazioneTrasferta ) {
-		$this->formazioneTrasferta = $formazioneTrasferta;
+	public function setSquadraTrasferta( $squadraTrasferta ) {
+		$this->squadraTrasferta = $squadraTrasferta;
 	}
 
 	/**
@@ -204,6 +210,5 @@ class Partita {
 	public function setLastUpdateTimestamp( $lastUpdateTimestamp ) {
 		$this->lastUpdateTimestamp = $lastUpdateTimestamp;
 	}
-
 
 }
