@@ -54,6 +54,13 @@ class PartitaReale {
 
 
 	/**
+	 * @ORM\OneToOne(targetEntity="GiornataReale")
+	 * @ORM\JoinColumn(name="id_giornata_reale", referencedColumnName="id")
+	 **/
+	private $giornata;
+
+
+	/**
 	 * @var \DateTime
 	 * @Gedmo\Timestampable(on="create")
 	 * @Serializer\Type("DateTime")
@@ -209,6 +216,20 @@ class PartitaReale {
 	 */
 	public function setLastUpdateTimestamp( $lastUpdateTimestamp ) {
 		$this->lastUpdateTimestamp = $lastUpdateTimestamp;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getGiornata() {
+		return $this->giornata;
+	}
+
+	/**
+	 * @param mixed $giornata
+	 */
+	public function setGiornata( $giornata ) {
+		$this->giornata = $giornata;
 	}
 
 }
