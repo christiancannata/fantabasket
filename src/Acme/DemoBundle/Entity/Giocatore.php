@@ -41,6 +41,13 @@ class Giocatore {
 	/**
 	 * @var string
 	 *
+	 * @ORM\Column(name="prezzo_iniziale", type="integer", nullable=true)
+	 */
+	private $prezzoIniziale;
+
+	/**
+	 * @var string
+	 *
 	 * @ORM\Column(name="altezza", type="integer", nullable=true)
 	 */
 	private $altezza;
