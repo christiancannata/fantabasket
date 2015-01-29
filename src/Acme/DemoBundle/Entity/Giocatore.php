@@ -54,7 +54,7 @@ class Giocatore
 	/**
 	 * @var string
 	 *
-	 * @ORM\Column(name="ruolo", type="string",  columnDefinition="ENUM('A','B','C','D') " ,nullable=false)
+	 * @ORM\Column(name="ruolo", type="string",  columnDefinition="ENUM('PLAYMAKER','GUARDIA_ALA_PICCOLA','ALA_FORTE','PIVOT','ALLENATORE')" ,nullable=false)
 	 */
 	private $ruolo;
 
