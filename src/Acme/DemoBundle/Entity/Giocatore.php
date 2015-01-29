@@ -80,6 +80,12 @@ class Giocatore {
 	 */
 	private $ruolo;
 
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="avatar", type="string" ,nullable=true)
+	 */
+	private $avatar;
 
 	public function __construct() {
 		parent::__construct();
@@ -213,6 +219,20 @@ class Giocatore {
 	 */
 	public function setNazionalita( $nazionalita ) {
 		$this->nazionalita = $nazionalita;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getAvatar() {
+		return $this->avatar;
+	}
+
+	/**
+	 * @param string $avatar
+	 */
+	public function setAvatar( $avatar ) {
+		$this->avatar = $avatar;
 	}
 
 
