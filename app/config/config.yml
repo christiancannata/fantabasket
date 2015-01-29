@@ -107,3 +107,9 @@ hwi_oauth:
         # mapping between resource owners (see below) and properties
         properties:
             facebook: facebookID
+
+stof_doctrine_extensions:
+    default_locale: it_IT
+    orm:
+        default:
+            timestampable: true
