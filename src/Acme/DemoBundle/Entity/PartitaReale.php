@@ -76,6 +76,13 @@ class PartitaReale {
 	 */
 	private $lastUpdateTimestamp;
 
+	/**
+	 * @var \DateTime
+	 * @Serializer\Type("DateTime")
+	 * @ORM\Column(name="data", type="datetime", nullable=false)
+	 */
+	private $data;
+
 
 	public function __construct() {
 		parent::__construct();
@@ -231,5 +238,21 @@ class PartitaReale {
 	public function setGiornata( $giornata ) {
 		$this->giornata = $giornata;
 	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getData() {
+		return $this->data;
+	}
+
+	/**
+	 * @param mixed $data
+	 */
+	public function setData( $data ) {
+		$this->data = $data;
+	}
+
+
 
 }

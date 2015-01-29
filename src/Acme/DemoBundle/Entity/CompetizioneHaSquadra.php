@@ -54,7 +54,6 @@ class CompetizioneHaSquadra
 	private $lastUpdateTimestamp;
 
 
-
 	public function __construct()
 	{
 		parent::__construct();
