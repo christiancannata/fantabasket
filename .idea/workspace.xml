@@ -2,25 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21d5af53-fe1f-45b6-9aa5-671d7f1a3ff5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/Services/CalcolatoreClassifica.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/Services/CalcolatoreRisultati.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/DependencyInjection/Configuration.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/Services/GeneratoreCampionato.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/Services/GeneratoreSquadre.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/Services/GeneratoreTorneo.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/GiornataReale.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Acme/DemoBundle/Resources/config/services.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Acme/DemoBundle/DependencyInjection/AcmeDemoExtension.php" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/DependencyInjection/AcmeDemoExtension.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Classifica.php" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Classifica.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Competizione.php" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Competizione.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Acme/DemoBundle/Controller/DemoController.php" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/Controller/DemoController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Giornata.php" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Giornata.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Voto.php" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Voto.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/fantabasket.iml" afterPath="$PROJECT_DIR$/.idea/fantabasket.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/parameters.yml.dist" afterPath="$PROJECT_DIR$/app/config/parameters.yml.dist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Acme/DemoBundle/Resources/config/services.yml" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/Resources/config/services.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/FormazioneHaGiocatore.php" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/FormazioneHaGiocatore.php" />
     </list>
     <ignored path="fantabasket.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,16 +27,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Competizione.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Competizione.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.333333" vertical-offset="3568" max-vertical-offset="4095">
-              <caret line="258" column="0" selection-start-line="258" selection-start-column="0" selection-end-line="258" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GeneratoreSquadre.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Services/GeneratoreSquadre.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -70,7 +42,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
               <caret line="26" column="67" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
-              <folding />
+              <folding>
+                <marker date="1422543787000" expanded="true" signature="87:926" placeholder="services:" />
+                <marker date="1422543787000" expanded="true" signature="578:743" placeholder="generatore_torneo:" />
+                <marker date="1422543787000" expanded="true" signature="674:743" placeholder="calls:" />
+                <marker date="1422543787000" expanded="true" signature="748:926" placeholder="generatore_squadre:" />
+                <marker date="1422543787000" expanded="true" signature="854:926" placeholder="calls:" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -117,11 +95,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Giornata.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Giornata.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Giornata.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.71537" vertical-offset="2188" max-vertical-offset="2715">
-              <caret line="171" column="0" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+            <state vertical-scroll-proportion="-11.333333" vertical-offset="2188" max-vertical-offset="2715">
+              <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FormazioneHaGiocatore.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Entity/FormazioneHaGiocatore.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5833333" vertical-offset="2175" max-vertical-offset="2715">
+              <caret line="168" column="7" selection-start-line="168" selection-start-column="7" selection-end-line="168" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -184,7 +172,6 @@
         <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/CompetizioneHaSquadra.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Giocatore.php" />
-        <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/FormazioneHaGiocatore.php" />
         <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Formazione.php" />
         <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Partita.php" />
         <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/ClassificaHaSquadra.php" />
@@ -206,6 +193,7 @@
         <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Voto.php" />
         <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/GiornataReale.php" />
         <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Giornata.php" />
+        <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/FormazioneHaGiocatore.php" />
       </list>
     </option>
   </component>
@@ -546,7 +534,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28674698" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -560,7 +548,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891566" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38841203" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38841203" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32861635" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -747,20 +735,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Entity/FormazioneHaGiocatore.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.125" vertical-offset="180" max-vertical-offset="2505">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Partita.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="3540">
           <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
           <folding>
-            <element signature="e#42#74#0#PHP" expanded="true" />
+            <element signature="e#42#74#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -834,7 +814,7 @@
         <state vertical-scroll-proportion="-16.875" vertical-offset="0" max-vertical-offset="525">
           <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
           <folding>
-            <element signature="e#55#115#0#PHP" expanded="true" />
+            <element signature="e#55#115#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -844,7 +824,7 @@
         <state vertical-scroll-proportion="-11.875" vertical-offset="0" max-vertical-offset="465">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
-            <element signature="e#55#114#0#PHP" expanded="true" />
+            <element signature="e#55#114#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -905,7 +885,7 @@
         <state vertical-scroll-proportion="0.1388889" vertical-offset="660" max-vertical-offset="2640">
           <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
           <folding>
-            <element signature="e#42#74#0#PHP" expanded="true" />
+            <element signature="e#42#74#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -915,7 +895,7 @@
         <state vertical-scroll-proportion="0.8333333" vertical-offset="60" max-vertical-offset="2220">
           <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
           <folding>
-            <element signature="e#42#74#0#PHP" expanded="true" />
+            <element signature="e#42#74#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -925,7 +905,7 @@
         <state vertical-scroll-proportion="-5.0" vertical-offset="465" max-vertical-offset="2040">
           <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="44" selection-end-column="23" />
           <folding>
-            <element signature="e#42#74#0#PHP" expanded="true" />
+            <element signature="e#42#74#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -950,7 +930,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
           <caret line="26" column="67" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
-          <folding />
+          <folding>
+            <marker date="1422543787000" expanded="true" signature="87:926" placeholder="services:" />
+            <marker date="1422543787000" expanded="true" signature="578:743" placeholder="generatore_torneo:" />
+            <marker date="1422543787000" expanded="true" signature="674:743" placeholder="calls:" />
+            <marker date="1422543787000" expanded="true" signature="748:926" placeholder="generatore_squadre:" />
+            <marker date="1422543787000" expanded="true" signature="854:926" placeholder="calls:" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1006,8 +992,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Giornata.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71537" vertical-offset="2188" max-vertical-offset="2715">
-          <caret line="171" column="0" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+        <state vertical-scroll-proportion="-11.333333" vertical-offset="2188" max-vertical-offset="2715">
+          <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Entity/FormazioneHaGiocatore.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5833333" vertical-offset="2175" max-vertical-offset="2715">
+          <caret line="168" column="7" selection-start-line="168" selection-start-column="7" selection-end-line="168" selection-end-column="7" />
           <folding />
         </state>
       </provider>

@@ -54,9 +54,9 @@ class FormazioneHaGiocatore
 	/**
 	 * @var integer
 	 *
-	 * @ORM\Column(name="prezzo", type="integer", nullable=false)
+	 * @ORM\Column(name="minuti_giorno", type="integer", nullable=false)
 	 */
-	protected $prezzo = '0';
+	protected $minutiGioco = 0;
 
 	public function __construct()
 	{
@@ -144,18 +144,34 @@ class FormazioneHaGiocatore
 	}
 
 	/**
-	 * @return int
+	 * @return mixed
 	 */
-	public function getPrezzo() {
-		return $this->prezzo;
+	public function getFormazione() {
+		return $this->formazione;
 	}
 
 	/**
-	 * @param int $prezzo
+	 * @param mixed $formazione
 	 */
-	public function setPrezzo( $prezzo ) {
-		$this->prezzo = $prezzo;
+	public function setFormazione( $formazione ) {
+		$this->formazione = $formazione;
 	}
+
+	/**
+	 * @return int
+	 */
+	public function getMinutiGioco() {
+		return $this->minutiGioco;
+	}
+
+	/**
+	 * @param int $minutiGioco
+	 */
+	public function setMinutiGioco( $minutiGioco ) {
+		$this->minutiGioco = $minutiGioco;
+	}
+
+
 
 
 }
