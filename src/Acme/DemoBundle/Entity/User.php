@@ -46,10 +46,16 @@ class User extends BaseUser
 	 **/
 	private $squadre;
 
+	/**
+	 *  @ORM\OneToMany(targetEntity="Competizione", mappedBy="id_user")
+	 **/
+	private $competizioni;
+
 	public function __construct()
 	{
 		parent::__construct();
 		$this->squadre = new ArrayCollection();
+		$this->competizioni = new ArrayCollection();
 	}
 
 	/**
@@ -113,5 +119,20 @@ class User extends BaseUser
 	public function setNome( $nome ) {
 		$this->nome = $nome;
 	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCompetizioni() {
+		return $this->competizioni;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getSquadre() {
+		return $this->squadre;
+	}
+
 
 }

@@ -3,12 +3,15 @@
 namespace Acme\DemoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
+
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="squadra_ha_giocatore")
+ * @ORM\Table(name="competizione")
  */
-class SquadraHaGiocatore
+class Competizione
 {
 	/**
 	 * @ORM\Id
@@ -18,43 +21,36 @@ class SquadraHaGiocatore
 	protected $id;
 
 	/**
+	 * @var string
 	 *
-	 * @ORM\ManyToOne(targetEntity="Giocatore")
-	 * @ORM\JoinColumns({
-	 *   @ORM\JoinColumn(name="id_giocatore", referencedColumnName="id")
-	 * })
+	 * @ORM\Column(name="nome", type="string", nullable=true)
 	 */
-	protected $giocatore;
-
-	/**
-	 * @ORM\ManyToOne(targetEntity="Squadra")
-	 * @ORM\JoinColumns({
-	 *   @ORM\JoinColumn(name="id_squadra", referencedColumnName="id")
-	 * })
-	 */
-	protected $squadra;
+	private $nome;
 
 
 	/**
 	 * @var \DateTime
-	 *
+	 * @Gedmo\Timestampable(on="create")
+	 * @Serializer\Type("DateTime")
 	 * @ORM\Column(name="timestamp", type="datetime", nullable=false)
 	 */
 	private $timestamp;
 
 	/**
 	 * @var \DateTime
-	 *
+	 * @Gedmo\Timestampable(on="update")
+	 * @Serializer\Type("DateTime")
 	 * @ORM\Column(name="last_update_timestamp", type="datetime", nullable=false)
 	 */
 	private $lastUpdateTimestamp;
 
+
 	/**
-	 * @var integer
-	 *
-	 * @ORM\Column(name="prezzo", type="integer", nullable=false)
-	 */
-	protected $prezzo = '0';
+	 *  @ORM\ManyToOne(targetEntity="User", inversedBy="competizioni")
+	 *  @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+	 **/
+	private $utente;
+
 
 	public function __construct()
 	{
@@ -89,30 +85,6 @@ class SquadraHaGiocatore
 		$this->nome = $nome;
 	}
 
-
-	public function setGiocatore(Giocatore $giocatore) {
-		$this->giocatore = $giocatore;
-
-		return $this;
-	}
-
-
-	public function getGiocatore() {
-		return $this->giocatore;
-	}
-
-
-	public function setSquadra(Squadra $squadra) {
-		$this->squadra = $squadra;
-
-		return $this;
-	}
-
-
-	public function getSquadra() {
-		return $this->squadra;
-	}
-
 	/**
 	 * @return \DateTime
 	 */
@@ -142,17 +114,17 @@ class SquadraHaGiocatore
 	}
 
 	/**
-	 * @return int
+	 * @return mixed
 	 */
-	public function getPrezzo() {
-		return $this->prezzo;
+	public function getUtente() {
+		return $this->utente;
 	}
 
 	/**
-	 * @param int $prezzo
+	 * @param mixed $utente
 	 */
-	public function setPrezzo( $prezzo ) {
-		$this->prezzo = $prezzo;
+	public function setUtente( $utente ) {
+		$this->utente = $utente;
 	}
 
 

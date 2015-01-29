@@ -3,12 +3,14 @@
 namespace Acme\DemoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="squadra_ha_giocatore")
+ * @ORM\Table(name="competizione_ha_squadra")
  */
-class SquadraHaGiocatore
+class CompetizioneHaSquadra
 {
 	/**
 	 * @ORM\Id
@@ -19,12 +21,12 @@ class SquadraHaGiocatore
 
 	/**
 	 *
-	 * @ORM\ManyToOne(targetEntity="Giocatore")
+	 * @ORM\ManyToOne(targetEntity="Competizione")
 	 * @ORM\JoinColumns({
-	 *   @ORM\JoinColumn(name="id_giocatore", referencedColumnName="id")
+	 *   @ORM\JoinColumn(name="id_competizione", referencedColumnName="id")
 	 * })
 	 */
-	protected $giocatore;
+	protected $competizione;
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="Squadra")
@@ -37,29 +39,25 @@ class SquadraHaGiocatore
 
 	/**
 	 * @var \DateTime
-	 *
+	 * @Gedmo\Timestampable(on="create")
+	 * @Serializer\Type("DateTime")
 	 * @ORM\Column(name="timestamp", type="datetime", nullable=false)
 	 */
 	private $timestamp;
 
 	/**
 	 * @var \DateTime
-	 *
+	 * @Gedmo\Timestampable(on="update")
+	 * @Serializer\Type("DateTime")
 	 * @ORM\Column(name="last_update_timestamp", type="datetime", nullable=false)
 	 */
 	private $lastUpdateTimestamp;
 
-	/**
-	 * @var integer
-	 *
-	 * @ORM\Column(name="prezzo", type="integer", nullable=false)
-	 */
-	protected $prezzo = '0';
+
 
 	public function __construct()
 	{
 		parent::__construct();
-		// your own logic
 	}
 
 	/**
@@ -89,17 +87,6 @@ class SquadraHaGiocatore
 		$this->nome = $nome;
 	}
 
-
-	public function setGiocatore(Giocatore $giocatore) {
-		$this->giocatore = $giocatore;
-
-		return $this;
-	}
-
-
-	public function getGiocatore() {
-		return $this->giocatore;
-	}
 
 
 	public function setSquadra(Squadra $squadra) {
@@ -142,18 +129,20 @@ class SquadraHaGiocatore
 	}
 
 	/**
-	 * @return int
+	 * @return mixed
 	 */
-	public function getPrezzo() {
-		return $this->prezzo;
+	public function getCompetizione() {
+		return $this->competizione;
 	}
 
 	/**
-	 * @param int $prezzo
+	 * @param mixed $competizione
 	 */
-	public function setPrezzo( $prezzo ) {
-		$this->prezzo = $prezzo;
+	public function setCompetizione( $competizione ) {
+		$this->competizione = $competizione;
 	}
+
+
 
 
 }
