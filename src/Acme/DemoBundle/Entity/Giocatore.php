@@ -47,6 +47,11 @@ class Giocatore
 
 
 	/**
+	 *  @ORM\OneToMany(targetEntity="Voto", mappedBy="id_giocatore")
+	 **/
+	private $voti;
+
+	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="ruolo", type="string",  columnDefinition="ENUM('A','B','C','D') " ,nullable=false)
@@ -142,7 +147,12 @@ class Giocatore
 		$this->ruolo = $ruolo;
 	}
 
-
+	/**
+	 * @return mixed
+	 */
+	public function getVoti() {
+		return $this->voti;
+	}
 
 
 }

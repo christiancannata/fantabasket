@@ -144,19 +144,7 @@ class User extends BaseUser
 		return $this->squadre;
 	}
 
-	/**
-	 * @return \DateTime
-	 */
-	public function getExpiresAt() {
-		return $this->expiresAt;
-	}
 
-	/**
-	 * @param \DateTime $expiresAt
-	 */
-	public function setExpiresAt( $expiresAt ) {
-		$this->expiresAt = $expiresAt;
-	}
 
 	/**
 	 * @return string

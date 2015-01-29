@@ -11,8 +11,7 @@ use JMS\Serializer\Annotation as Serializer;
  * @ORM\Entity
  * @ORM\Table(name="competizione")
  */
-class Competizione
-{
+class Competizione {
 	/**
 	 * @ORM\Id
 	 * @ORM\Column(type="integer")
@@ -46,14 +45,28 @@ class Competizione
 
 
 	/**
-	 *  @ORM\ManyToOne(targetEntity="User", inversedBy="competizioni")
-	 *  @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+	 * @ORM\ManyToOne(targetEntity="User", inversedBy="competizioni")
+	 * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
 	 **/
 	private $utente;
 
 
-	public function __construct()
-	{
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="tipo", type="string",  columnDefinition="ENUM('TORNEO','CAMPIONATO') " ,nullable=false)
+	 */
+	private $tipo;
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="stato_attuale", type="string" ,nullable=false)
+	 */
+	private $statoAttuale;
+
+
+	public function __construct() {
 		parent::__construct();
 		// your own logic
 	}
@@ -63,12 +76,9 @@ class Competizione
 	 *
 	 * @return integer
 	 */
-	public function getId()
-	{
+	public function getId() {
 		return $this->id;
 	}
-
-
 
 
 	/**
@@ -125,6 +135,34 @@ class Competizione
 	 */
 	public function setUtente( $utente ) {
 		$this->utente = $utente;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getTipo() {
+		return $this->tipo;
+	}
+
+	/**
+	 * @param string $tipo
+	 */
+	public function setTipo( $tipo ) {
+		$this->tipo = $tipo;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getStatoAttuale() {
+		return $this->statoAttuale;
+	}
+
+	/**
+	 * @param string $statoAttuale
+	 */
+	public function setStatoAttuale( $statoAttuale ) {
+		$this->statoAttuale = $statoAttuale;
 	}
 
 
