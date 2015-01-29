@@ -1,0 +1,64 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Giocatore</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ entity.nome }}</td>
+            </tr>
+            <tr>
+                <th>Cognome</th>
+                <td>{{ entity.cognome }}</td>
+            </tr>
+            <tr>
+                <th>Prezzo</th>
+                <td>{{ entity.prezzo }}</td>
+            </tr>
+            <tr>
+                <th>Prezzoiniziale</th>
+                <td>{{ entity.prezzoIniziale }}</td>
+            </tr>
+            <tr>
+                <th>Altezza</th>
+                <td>{{ entity.altezza }}</td>
+            </tr>
+            <tr>
+                <th>Peso</th>
+                <td>{{ entity.peso }}</td>
+            </tr>
+            <tr>
+                <th>Nazionalita</th>
+                <td>{{ entity.nazionalita }}</td>
+            </tr>
+            <tr>
+                <th>Ruolo</th>
+                <td>{{ entity.ruolo }}</td>
+            </tr>
+            <tr>
+                <th>Avatar</th>
+                <td>{{ entity.avatar }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('giocatore') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('giocatore_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

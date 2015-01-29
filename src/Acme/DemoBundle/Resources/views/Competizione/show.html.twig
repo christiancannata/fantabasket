@@ -1,0 +1,64 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Competizione</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ entity.nome }}</td>
+            </tr>
+            <tr>
+                <th>Timestamp</th>
+                <td>{{ entity.timestamp|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Lastupdatetimestamp</th>
+                <td>{{ entity.lastUpdateTimestamp|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Tipo</th>
+                <td>{{ entity.tipo }}</td>
+            </tr>
+            <tr>
+                <th>Statoattuale</th>
+                <td>{{ entity.statoAttuale }}</td>
+            </tr>
+            <tr>
+                <th>Descrizione</th>
+                <td>{{ entity.descrizione }}</td>
+            </tr>
+            <tr>
+                <th>Maxpartecipanti</th>
+                <td>{{ entity.maxPartecipanti }}</td>
+            </tr>
+            <tr>
+                <th>Avatar</th>
+                <td>{{ entity.avatar }}</td>
+            </tr>
+            <tr>
+                <th>Modalitamercato</th>
+                <td>{{ entity.modalitaMercato }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('competizione') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('competizione_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
