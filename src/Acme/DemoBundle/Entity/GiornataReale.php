@@ -24,23 +24,21 @@ class GiornataReale {
 	private $nome;
 
 
-
 	/**
 	 *
 	 * @ORM\Column(name="voti_aggiornati", type="integer", nullable=true)
 	 */
-	private $votiAggiornati;
-
+	private $votiAggiornati = 0;
 
 
 	/**
-	 *  @ORM\OneToMany(targetEntity="PartitaReale", mappedBy="id_partita_reale")
+	 * @ORM\OneToMany(targetEntity="PartitaReale", mappedBy="id_partita_reale")
 	 **/
 	private $partite;
 
 
 	/**
-	 *  @ORM\OneToMany(targetEntity="Voto", mappedBy="id_giornata_reale")
+	 * @ORM\OneToMany(targetEntity="Voto", mappedBy="id_giornata_reale")
 	 **/
 	private $voti;
 
@@ -119,9 +117,6 @@ class GiornataReale {
 	public function setPartite( $partite ) {
 		$this->partite = $partite;
 	}
-
-
-
 
 
 }

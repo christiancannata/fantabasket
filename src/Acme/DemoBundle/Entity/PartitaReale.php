@@ -36,7 +36,7 @@ class PartitaReale {
 	 *
 	 * @ORM\Column(name="voti_aggiornati", type="integer", nullable=true)
 	 */
-	private $votiAggiornati;
+	private $votiAggiornati = 0;
 
 
 	/**
