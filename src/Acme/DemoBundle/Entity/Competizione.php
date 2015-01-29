@@ -65,6 +65,18 @@ class Competizione {
 	 */
 	private $statoAttuale;
 
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="descrizione", type="text" ,nullable=true)
+	 */
+	private $descrizione;
+
+	/**
+	 *  @ORM\OneToMany(targetEntity="Giornata", mappedBy="id_competizione")
+	 **/
+	private $giornate;
+
 
 	public function __construct() {
 		parent::__construct();
@@ -164,6 +176,28 @@ class Competizione {
 	public function setStatoAttuale( $statoAttuale ) {
 		$this->statoAttuale = $statoAttuale;
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getDescrizione() {
+		return $this->descrizione;
+	}
+
+	/**
+	 * @param string $descrizione
+	 */
+	public function setDescrizione( $descrizione ) {
+		$this->descrizione = $descrizione;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getGiornate() {
+		return $this->giornate;
+	}
+
 
 
 }
