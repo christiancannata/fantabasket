@@ -33,6 +33,11 @@ class GiornataReale {
 
 
 
+	/**
+	 *  @ORM\OneToMany(targetEntity="PartitaReale", mappedBy="id_partita_reale")
+	 **/
+	private $partite;
+
 
 	/**
 	 *  @ORM\OneToMany(targetEntity="Voto", mappedBy="id_giornata_reale")
@@ -99,6 +104,20 @@ class GiornataReale {
 	 */
 	public function setVoti( $voti ) {
 		$this->voti = $voti;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getPartite() {
+		return $this->partite;
+	}
+
+	/**
+	 * @param mixed $partite
+	 */
+	public function setPartite( $partite ) {
+		$this->partite = $partite;
 	}
 
 
