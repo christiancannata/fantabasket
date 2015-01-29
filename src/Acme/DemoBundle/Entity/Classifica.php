@@ -44,7 +44,10 @@ class Classifica {
 	private $giornata;
 
 
-
+	/**
+	 * @ORM\OneToMany(targetEntity="ClassificaHaSquadra", mappedBy="classifica")
+	 **/
+	private $squadre;
 
 
 	public function __construct() {
@@ -104,7 +107,12 @@ class Classifica {
 		$this->giornata = $giornata;
 	}
 
-
+	/**
+	 * @return mixed
+	 */
+	public function getSquadre() {
+		return $this->squadre;
+	}
 
 
 }

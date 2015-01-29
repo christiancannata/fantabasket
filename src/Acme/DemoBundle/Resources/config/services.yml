@@ -1,0 +1,24 @@
+parameters:
+#    facile_telefonia_ws.example.class: Facile\Telefonia\WsBundle\Example
+
+services:
+
+    calcolatore_classifica:
+      class: Acme\DemoBundle\Services\CalcolatoreClassifica
+      calls:
+            - [setContainer, ["@service_container"] ]
+
+    calcolatore_risultati:
+      class: Acme\DemoBundle\Services\CalcolatoreRisultati
+      calls:
+            - [setContainer, ["@service_container"] ]
+
+    generatore_campionato:
+          class: Acme\DemoBundle\Services\GeneratoreCampionato
+          calls:
+                - [setContainer, ["@service_container"] ]
+
+    generatore_torneo:
+              class: Acme\DemoBundle\Services\GeneratoreTorneo
+              calls:
+                    - [setContainer, ["@service_container"] ]

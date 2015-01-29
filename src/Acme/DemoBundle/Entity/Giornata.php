@@ -45,6 +45,12 @@ class Giornata {
 	private $votiAggiornati;
 
 
+	/**
+	 * @ORM\OneToOne(targetEntity="Classifica", mappedBy="giornata")
+	 **/
+	private $classifica;
+
+
 	public function __construct() {
 		parent::__construct();
 		// your own logic
@@ -115,6 +121,12 @@ class Giornata {
 		$this->votiAggiornati = $votiAggiornati;
 	}
 
+	/**
+	 * @return mixed
+	 */
+	public function getClassifica() {
+		return $this->classifiche;
+	}
 
 
 
