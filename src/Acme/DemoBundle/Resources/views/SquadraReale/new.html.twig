@@ -1,15 +1,42 @@
-{% extends '::base.html.twig' %}
+{% extends "AcmeDemoBundle:Demo:layout.html.twig" %}
 
 {% block body -%}
-    <h1>SquadraReale creation</h1>
 
-    {{ form(form) }}
+    {% include 'AcmeDemoBundle:Demo:menu_admin.html.twig' with {'foo': 'bar'} %}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('squadrareale') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+
+
+
+    <div class="m-12 bg-dark-blue">
+        <div class="big-heading bg-dark-blue">
+            <h1>Nuova Squadra Reale</h1>
+        </div>
+    </div>
+
+
+    <section class="bg-dark-blue">
+
+        <div class="m-06">
+            <div class="module-content">
+
+                {{ form(form) }}
+
+                <ul class="record_actions">
+                    <li>
+                        <a href="{{ path('squadrareale') }}">
+                            Back to the list
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Module Content -->
+        </div>
+        <!-- Module -->
+
+
+
+    </section>
+
+
 {% endblock %}
