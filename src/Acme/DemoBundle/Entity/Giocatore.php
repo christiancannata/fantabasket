@@ -51,7 +51,7 @@ class Giocatore
 	 *
 	 * @ORM\Column(name="ruolo", type="string",  columnDefinition="ENUM('A','B','C','D') " ,nullable=false)
 	 */
-	private $tipo;
+	private $ruolo;
 
 
 	public function __construct()
@@ -131,16 +131,17 @@ class Giocatore
 	/**
 	 * @return string
 	 */
-	public function getTipo() {
-		return $this->tipo;
+	public function getRuolo() {
+		return $this->ruolo;
 	}
 
 	/**
-	 * @param string $tipo
+	 * @param string $ruolo
 	 */
-	public function setTipo( $tipo ) {
-		$this->tipo = $tipo;
+	public function setRuolo( $ruolo ) {
+		$this->ruolo = $ruolo;
 	}
+
 
 
 

@@ -51,6 +51,16 @@ class User extends BaseUser
 	 **/
 	private $competizioni;
 
+
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="profilo", type="string",  columnDefinition="ENUM('BASE','COMPLETO') " ,nullable=false)
+	 */
+	private $profilo;
+
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -132,6 +142,34 @@ class User extends BaseUser
 	 */
 	public function getSquadre() {
 		return $this->squadre;
+	}
+
+	/**
+	 * @return \DateTime
+	 */
+	public function getExpiresAt() {
+		return $this->expiresAt;
+	}
+
+	/**
+	 * @param \DateTime $expiresAt
+	 */
+	public function setExpiresAt( $expiresAt ) {
+		$this->expiresAt = $expiresAt;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getProfilo() {
+		return $this->profilo;
+	}
+
+	/**
+	 * @param string $profilo
+	 */
+	public function setProfilo( $profilo ) {
+		$this->profilo = $profilo;
 	}
 
 
