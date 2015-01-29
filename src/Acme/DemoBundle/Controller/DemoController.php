@@ -2,6 +2,7 @@
 
 namespace Acme\DemoBundle\Controller;
 
+use JMS\Serializer\SerializerBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,6 +11,7 @@ use Acme\DemoBundle\Form\ContactType;
 // these import the "@Route" and "@Template" annotations
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class DemoController extends Controller
 {
@@ -32,6 +34,29 @@ class DemoController extends Controller
                            ->getRepository('AcmeDemoBundle:Giocatore');
         $giocatori= $repository->findAll();
         return array("giocatori"=>$giocatori);
+    }
+
+
+    /**
+     * @Route("/squadra/crea")
+     * @Method({"POST"})
+     */
+    public function creaSquadraAction(Request $r)
+    {
+
+        $serializer = SerializerBuilder::create()->build();
+        $squadra = $serializer->deserialize($r->getContent(), 'AcmeDemoBundle\Squadra', 'json');
+
+        $validator = $this->get('validator');
+        $errori = $validator->validate($squadra);
+
+        if (count($errori) > 0) {
+            $errorsString = (string) $errori;
+            return new Response($errorsString);
+        }
+
+        return new Response('L\'autore è valido! Sì!');
+        return array();
     }
 
 

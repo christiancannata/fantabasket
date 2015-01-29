@@ -150,6 +150,19 @@
 
                             </td>
                         </tr>
+                        {% for giocatore in giocatori %}
+                            <tr>
+                                <td>{{ giocatore.getNome()~' '~giocatore.getCognome() }}</td>
+                                <td>ATT</td>
+                                <td>{{ giocatore.getSquadraReale().getNome() }}</td>
+                                <td>{{ giocatore.getPrezzo() }}Ml</td>
+                                <td>
+                                    <a class="button yellow" href="#" >Acquista</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+
                         <tr>
                             <td>Claudio Marchisio</td>
                             <td>ATT</td>
