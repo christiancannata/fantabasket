@@ -56,7 +56,7 @@ class User extends BaseUser
 	/**
 	 * @var string
 	 *
-	 * @ORM\Column(name="profilo", type="string",  columnDefinition="ENUM('BASE','COMPLETO') " ,nullable=false)
+	 * @ORM\Column(name="profilo", type="string",  columnDefinition="ENUM('FREE_AGENT','GENERAL_MANAGER') " ,nullable=false)
 	 */
 	private $profilo;
 

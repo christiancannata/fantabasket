@@ -5,6 +5,7 @@ namespace Acme\DemoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="voto")
@@ -33,6 +34,13 @@ class Voto {
 
 
 	/**
+	 * @ORM\ManyToOne(targetEntity="GiornataReale", inversedBy="voti")
+	 * @ORM\JoinColumn(name="id_giornata_reale", referencedColumnName="id")
+	 **/
+	private $giornata;
+
+
+	/**
 	 * @var \DateTime
 	 * @Gedmo\Timestampable(on="create")
 	 * @Serializer\Type("DateTime")
@@ -47,7 +55,6 @@ class Voto {
 	 * @ORM\Column(name="last_update_timestamp", type="datetime", nullable=false)
 	 */
 	private $lastUpdateTimestamp;
-
 
 
 	public function __construct() {
@@ -118,6 +125,20 @@ class Voto {
 	 */
 	public function setTimestamp( $timestamp ) {
 		$this->timestamp = $timestamp;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getGiornata() {
+		return $this->giornata;
+	}
+
+	/**
+	 * @param mixed $giornata
+	 */
+	public function setGiornata( $giornata ) {
+		$this->giornata = $giornata;
 	}
 
 

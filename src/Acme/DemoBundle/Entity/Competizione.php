@@ -78,6 +78,30 @@ class Competizione {
 	private $giornate;
 
 
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="max_partecipanti", type="integer", nullable=true)
+	 */
+	private $maxPartecipanti;
+
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="avatar", type="string" ,nullable=true)
+	 */
+	private $avatar;
+
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="modalita_mercato", type="string",  columnDefinition="ENUM('OFFLINE','ASTA_BUSTA_CHIUSA','DEFAULT') " ,nullable=false)
+	 */
+	private $modalitaMercato="DEFAULT";
+
+
 	public function __construct() {
 		parent::__construct();
 		// your own logic
@@ -196,6 +220,48 @@ class Competizione {
 	 */
 	public function getGiornate() {
 		return $this->giornate;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getMaxPartecipanti() {
+		return $this->maxPartecipanti;
+	}
+
+	/**
+	 * @param string $maxPartecipanti
+	 */
+	public function setMaxPartecipanti( $maxPartecipanti ) {
+		$this->maxPartecipanti = $maxPartecipanti;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getAvatar() {
+		return $this->avatar;
+	}
+
+	/**
+	 * @param string $avatar
+	 */
+	public function setAvatar( $avatar ) {
+		$this->avatar = $avatar;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getModalitaMercato() {
+		return $this->modalitaMercato;
+	}
+
+	/**
+	 * @param string $modalitaMercato
+	 */
+	public function setModalitaMercato( $modalitaMercato ) {
+		$this->modalitaMercato = $modalitaMercato;
 	}
 
 

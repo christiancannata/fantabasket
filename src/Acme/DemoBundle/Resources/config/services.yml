@@ -22,3 +22,8 @@ services:
               class: Acme\DemoBundle\Services\GeneratoreTorneo
               calls:
                     - [setContainer, ["@service_container"] ]
+
+    generatore_squadre:
+                  class: Acme\DemoBundle\Services\GeneratoreSquadre
+                  calls:
+                        - [setContainer, ["@service_container"] ]

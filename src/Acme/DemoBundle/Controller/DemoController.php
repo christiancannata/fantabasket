@@ -56,7 +56,29 @@ class DemoController extends Controller
         }
 
         return new Response('L\'autore è valido! Sì!');
-        return array();
+    }
+
+
+
+    /**
+     * @Route("/competizione/crea")
+     * @Method({"POST"})
+     */
+    public function creaCompetizioneAction(Request $r)
+    {
+
+        $serializer = SerializerBuilder::create()->build();
+        $campionato = $serializer->deserialize($r->getContent(), 'AcmeDemoBundle\Campionato', 'json');
+
+        $validator = $this->get('validator');
+        $errori = $validator->validate($campionato);
+
+        if (count($errori) > 0) {
+            $errorsString = (string) $errori;
+            return new Response($errorsString);
+        }
+
+        return new Response('L\'autore è valido! Sì!');
     }
 
 

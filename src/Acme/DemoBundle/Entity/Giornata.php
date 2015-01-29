@@ -24,6 +24,15 @@ class Giornata {
 	private $nome;
 
 
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="profilo", type="string",  columnDefinition="ENUM('ANDATA','RITORNO') " ,nullable=false)
+	 */
+	private $tipo="ANDATA";
+
+
 	/**
 	 * @var string
 	 *
@@ -49,6 +58,11 @@ class Giornata {
 	 * @ORM\OneToOne(targetEntity="Classifica", mappedBy="giornata")
 	 **/
 	private $classifica;
+
+	/**
+	 *  @ORM\OneToMany(targetEntity="Voto", mappedBy="id_giornata")
+	 **/
+	private $voti;
 
 
 	public function __construct() {
@@ -126,6 +140,34 @@ class Giornata {
 	 */
 	public function getClassifica() {
 		return $this->classifiche;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getVoti() {
+		return $this->voti;
+	}
+
+	/**
+	 * @param mixed $voti
+	 */
+	public function setVoti( $voti ) {
+		$this->voti = $voti;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getTipo() {
+		return $this->tipo;
+	}
+
+	/**
+	 * @param string $tipo
+	 */
+	public function setTipo( $tipo ) {
+		$this->tipo = $tipo;
 	}
 
 
