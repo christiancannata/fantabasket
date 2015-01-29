@@ -8,8 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="giocatore")
  */
-class Giocatore
-{
+class Giocatore {
 	/**
 	 * @ORM\Id
 	 * @ORM\Column(type="integer")
@@ -40,14 +39,37 @@ class Giocatore
 	private $prezzo;
 
 	/**
-	 *  @ORM\ManyToOne(targetEntity="SquadraReale", inversedBy="giocatori")
-	 *  @ORM\JoinColumn(name="id_squadra_reale", referencedColumnName="id")
+	 * @var string
+	 *
+	 * @ORM\Column(name="altezza", type="integer", nullable=true)
+	 */
+	private $altezza;
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="peso", type="integer", nullable=true)
+	 */
+	private $peso;
+
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="nazionalita", type="string", nullable=true)
+	 */
+	private $nazionalita;
+
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="SquadraReale", inversedBy="giocatori")
+	 * @ORM\JoinColumn(name="id_squadra_reale", referencedColumnName="id")
 	 **/
 	private $squadraReale;
 
 
 	/**
-	 *  @ORM\OneToMany(targetEntity="Voto", mappedBy="id_giocatore")
+	 * @ORM\OneToMany(targetEntity="Voto", mappedBy="id_giocatore")
 	 **/
 	private $voti;
 
@@ -59,8 +81,7 @@ class Giocatore
 	private $ruolo;
 
 
-	public function __construct()
-	{
+	public function __construct() {
 		parent::__construct();
 		// your own logic
 	}
@@ -70,11 +91,9 @@ class Giocatore
 	 *
 	 * @return integer
 	 */
-	public function getId()
-	{
+	public function getId() {
 		return $this->id;
 	}
-
 
 
 	/**
@@ -152,6 +171,48 @@ class Giocatore
 	 */
 	public function getVoti() {
 		return $this->voti;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getAltezza() {
+		return $this->altezza;
+	}
+
+	/**
+	 * @param string $altezza
+	 */
+	public function setAltezza( $altezza ) {
+		$this->altezza = $altezza;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getPeso() {
+		return $this->peso;
+	}
+
+	/**
+	 * @param string $peso
+	 */
+	public function setPeso( $peso ) {
+		$this->peso = $peso;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getNazionalita() {
+		return $this->nazionalita;
+	}
+
+	/**
+	 * @param string $nazionalita
+	 */
+	public function setNazionalita( $nazionalita ) {
+		$this->nazionalita = $nazionalita;
 	}
 
 

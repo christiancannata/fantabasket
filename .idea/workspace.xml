@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="21d5af53-fe1f-45b6-9aa5-671d7f1a3ff5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/CompetizioneHaSquadra.php" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/CompetizioneHaSquadra.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Giocatore.php" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Giocatore.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/GiornataReale.php" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/GiornataReale.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/PartitaReale.php" afterPath="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/PartitaReale.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -50,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Giocatore.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Giocatore.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Giocatore.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.75" vertical-offset="510" max-vertical-offset="2460">
-              <caret line="56" column="104" selection-start-line="56" selection-start-column="85" selection-end-line="56" selection-end-column="104" />
+            <state vertical-scroll-proportion="0.45920303" vertical-offset="2758" max-vertical-offset="3375">
+              <caret line="200" column="28" selection-start-line="200" selection-start-column="28" selection-end-line="200" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -102,11 +103,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CompetizioneHaSquadra.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CompetizioneHaSquadra.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Entity/CompetizioneHaSquadra.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6666667" vertical-offset="435" max-vertical-offset="2265">
-              <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+            <state vertical-scroll-proportion="-13.125" vertical-offset="435" max-vertical-offset="2265">
+              <caret line="52" column="7" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -186,13 +187,13 @@
         <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Voto.php" />
         <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Giornata.php" />
         <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/FormazioneHaGiocatore.php" />
-        <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Giocatore.php" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml.dist" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Partita.php" />
         <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/GiornataReale.php" />
         <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/PartitaReale.php" />
         <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/CompetizioneHaSquadra.php" />
+        <option value="$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Giocatore.php" />
       </list>
     </option>
   </component>
@@ -928,26 +929,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Giocatore.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.75" vertical-offset="510" max-vertical-offset="2460">
-          <caret line="56" column="104" selection-start-line="56" selection-start-column="85" selection-end-line="56" selection-end-column="104" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
           <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Giornata.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.333333" vertical-offset="2188" max-vertical-offset="2715">
-          <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1000,8 +985,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Entity/CompetizioneHaSquadra.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6666667" vertical-offset="435" max-vertical-offset="2265">
-          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+        <state vertical-scroll-proportion="-13.125" vertical-offset="435" max-vertical-offset="2265">
+          <caret line="52" column="7" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Giornata.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.333333" vertical-offset="2188" max-vertical-offset="2715">
+          <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Acme/DemoBundle/Entity/Giocatore.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45920303" vertical-offset="2758" max-vertical-offset="3375">
+          <caret line="200" column="28" selection-start-line="200" selection-start-column="28" selection-end-line="200" selection-end-column="28" />
           <folding />
         </state>
       </provider>
