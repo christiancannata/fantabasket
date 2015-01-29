@@ -6,12 +6,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
 
-
 /**
  * @ORM\Entity
- * @ORM\Table(name="squadra")
+ * @ORM\Table(name="formazione")
  */
-class Squadra
+class Formazione
 {
 	/**
 	 * @ORM\Id
@@ -21,11 +20,21 @@ class Squadra
 	protected $id;
 
 	/**
-	 * @var string
 	 *
-	 * @ORM\Column(name="nome", type="string", nullable=true)
+	 * @ORM\ManyToOne(targetEntity="Squadra")
+	 * @ORM\JoinColumns({
+	 *   @ORM\JoinColumn(name="id_squadra", referencedColumnName="id")
+	 * })
 	 */
-	private $nome;
+	protected $squadra;
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="Giornata")
+	 * @ORM\JoinColumns({
+	 *   @ORM\JoinColumn(name="id_giornata", referencedColumnName="id")
+	 * })
+	 */
+	protected $giornata;
 
 
 	/**
@@ -44,17 +53,19 @@ class Squadra
 	 */
 	private $lastUpdateTimestamp;
 
+	/**
+	 * @var integer
+	 *
+	 * @ORM\Column(name="modulo", type="string", nullable=false)
+	 */
+	protected $modulo;
+
 
 	/**
-	 *  @ORM\ManyToOne(targetEntity="User", inversedBy="squadre")
-	 *  @ORM\JoinColumn(name="id_user", referencedColumnName="id")
-	 **/
-	private $utente;
-
-	/**
-	 *  @ORM\OneToMany(targetEntity="SquadraHaGiocatore", mappedBy="id_squadra")
+	 *  @ORM\OneToMany(targetEntity="FormazioneHaGiocatore", mappedBy="id_formazione")
 	 **/
 	private $giocatori;
+
 
 	public function __construct()
 	{
@@ -89,6 +100,30 @@ class Squadra
 		$this->nome = $nome;
 	}
 
+
+	public function setGiocatore(Giocatore $giocatore) {
+		$this->giocatore = $giocatore;
+
+		return $this;
+	}
+
+
+	public function getGiocatore() {
+		return $this->giocatore;
+	}
+
+
+	public function setSquadra(Squadra $squadra) {
+		$this->squadra = $squadra;
+
+		return $this;
+	}
+
+
+	public function getSquadra() {
+		return $this->squadra;
+	}
+
 	/**
 	 * @return \DateTime
 	 */
@@ -118,24 +153,17 @@ class Squadra
 	}
 
 	/**
-	 * @return mixed
+	 * @return int
 	 */
-	public function getUtente() {
-		return $this->utente;
+	public function getPrezzo() {
+		return $this->prezzo;
 	}
 
 	/**
-	 * @param mixed $utente
+	 * @param int $prezzo
 	 */
-	public function setUtente( $utente ) {
-		$this->utente = $utente;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getGiocatori() {
-		return $this->giocatori;
+	public function setPrezzo( $prezzo ) {
+		$this->prezzo = $prezzo;
 	}
 
 
