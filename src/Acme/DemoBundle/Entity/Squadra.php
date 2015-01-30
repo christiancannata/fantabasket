@@ -138,5 +138,18 @@ class Squadra
 		return $this->giocatori;
 	}
 
+	public function removeGiocatore(SquadraHaGiocatore $giocatore)
+	{
+		$this->giocatori->removeElement($giocatore) ;
+	}
+	public function setGiocatori($giocatori)
+	{
+		$this->giocatori = $giocatori;
+	}
+
+	public function addGiocatore(SquadraHaGiocatore $giocatore = null)
+	{
+		$this->giocatori->add($giocatore);
+	}
 
 }

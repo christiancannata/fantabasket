@@ -166,5 +166,18 @@ class Formazione
 		$this->prezzo = $prezzo;
 	}
 
+	public function removeGiocatore(FormazioneHaGiocatore $giocatore)
+	{
+		$this->giocatori->removeElement($giocatore) ;
+	}
+	public function setGiocatori($giocatori)
+	{
+		$this->giocatori = $giocatori;
+	}
+
+	public function addGiocatore(FormazioneHaGiocatore $giocatore = null)
+	{
+		$this->giocatori->add($giocatore);
+	}
 
 }
