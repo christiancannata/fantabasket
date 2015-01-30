@@ -41,6 +41,28 @@ class DemoController extends Controller {
 	}
 
 
+	/**
+	 * @Route("/secure_area/dashboard", name="_demo_dashboard")
+	 * @Template()
+	 */
+	public function dashboardAction() {
+
+
+
+		$repository = $this->container->get( 'doctrine' )
+		                              ->getRepository( 'AcmeDemoBundle:Squadra' );
+
+		$user        = $this->get( 'security.token_storage' )->getToken()->getUser();
+
+		$squadra  = $repository->findByUtente($user);
+		$hasSquadra=true;
+		if(!$squadra){
+			$hasSquadra=false;
+		}
+		return array( "hasSquadra" => $hasSquadra );
+	}
+
+
 
 	/**
 	 * @Route("/nuova-formazione", name="_demo_formazione")
