@@ -248,14 +248,32 @@ class GiocatoreController extends Controller {
 		$em         = $this->getDoctrine()->getManager();
 		foreach ( $params['giocatori'] as $giocatore ) {
 			$jsonSquadra = array(
-				"giocatore" => array( "id" => $giocatore ),
+				"giocatore" => array( "id" => $giocatore['id'] ),
 				"squadra"   => array( "id" => $params['squadra'] ),
+				"prezzo"    => $giocatore['valore']
 			);
 
 			$squadraHaGiocatore = $serializer->deserialize( $jsonSquadra, 'AcmeDemoBundle\SquadraHaGiocatore', 'json' );
 			$em->persist( $squadraHaGiocatore );
 		}
 
+		$em->flush();
+
+		return new JsonResponse( array( "" ) );
+	}
+
+
+	/**
+	 * @Route("/vendi")
+	 * @Method({"POST"})
+	 */
+	public function vendiGiocatoriAction( Request $r ) {
+		$params = json_decode( $r->getContent(), true );
+		$em     = $this->getDoctrine()->getManager();
+		foreach ( $params['giocatori'] as $giocatore ) {
+			$squadraHaGiocatore = $em->find( 'AcmeDemoBundle\SquadraHaGiocatore', $giocatore );
+			$em->remove( $squadraHaGiocatore );
+		}
 		$em->flush();
 
 		return new JsonResponse( array( "" ) );
