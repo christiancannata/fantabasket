@@ -21,7 +21,12 @@ class DemoController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
+        $formFactory = $this->get('fos_user.registration.form.factory');
+        $form = $formFactory->createForm();
+
+
+        return array('form' => $form->createView());
     }
 
     /**

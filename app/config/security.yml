@@ -6,6 +6,11 @@ security:
             id: fos_user.user_provider.username
     firewalls:
         secure_area:
+            remember_me:
+                key:      "%secret%"
+                lifetime: 31536000 # 365 giorni in secondi
+                path:     /
+                domain:   ~ # Defaults to the current domain from $_SERVER
             pattern: ^/
 
             oauth:

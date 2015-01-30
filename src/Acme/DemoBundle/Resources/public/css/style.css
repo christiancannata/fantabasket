@@ -405,6 +405,9 @@ header p {
 	color: #fff;
 	width: 40%;
 }
+.cd-user-modal p {
+	width: 100%;
+}
 .active a {
 	color: #E7BF3A!important;
 }
