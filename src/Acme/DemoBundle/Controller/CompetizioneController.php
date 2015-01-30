@@ -15,233 +15,290 @@ use Acme\DemoBundle\Form\CompetizioneType;
  *
  * @Route("/competizione")
  */
-class CompetizioneController extends Controller
-{
+class CompetizioneController extends Controller {
 
-    /**
-     * Lists all Competizione entities.
-     *
-     * @Route("/", name="competizione")
-     * @Method("GET")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
+	/**
+	 * Lists all Competizione entities.
+	 *
+	 * @Route("/", name="competizione")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function indexAction() {
+		$em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AcmeDemoBundle:Competizione')->findAll();
+		$entities = $em->getRepository( 'AcmeDemoBundle:Competizione' )->findAll();
 
-        return array(
-            'entities' => $entities,
-        );
-    }
-    /**
-     * Creates a new Competizione entity.
-     *
-     * @Route("/", name="competizione_create")
-     * @Method("POST")
-     * @Template("AcmeDemoBundle:Competizione:new.html.twig")
-     */
-    public function createAction(Request $request)
-    {
-        $entity = new Competizione();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+		return array(
+			'entities' => $entities,
+		);
+	}
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+	/**
+	 * Creates a new Competizione entity.
+	 *
+	 * @Route("/", name="competizione_create")
+	 * @Method("POST")
+	 * @Template("AcmeDemoBundle:Competizione:new.html.twig")
+	 */
+	public function createAction( Request $request ) {
+		$entity = new Competizione();
+		$form   = $this->createCreateForm( $entity );
+		$form->handleRequest( $request );
 
-            return $this->redirect($this->generateUrl('competizione_show', array('id' => $entity->getId())));
-        }
+		if ( $form->isValid() ) {
+			$em = $this->getDoctrine()->getManager();
+			$em->persist( $entity );
+			$em->flush();
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
+			return $this->redirect( $this->generateUrl( 'competizione_show', array( 'id' => $entity->getId() ) ) );
+		}
 
-    /**
-     * Creates a form to create a Competizione entity.
-     *
-     * @param Competizione $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createCreateForm(Competizione $entity)
-    {
-        $form = $this->createForm(new CompetizioneType(), $entity, array(
-            'action' => $this->generateUrl('competizione_create'),
-            'method' => 'POST',
-        ));
+		return array(
+			'entity' => $entity,
+			'form'   => $form->createView(),
+		);
+	}
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+	/**
+	 * Creates a form to create a Competizione entity.
+	 *
+	 * @param Competizione $entity The entity
+	 *
+	 * @return \Symfony\Component\Form\Form The form
+	 */
+	private function createCreateForm( Competizione $entity ) {
+		$form = $this->createForm( new CompetizioneType(), $entity, array(
+			'action' => $this->generateUrl( 'competizione_create' ),
+			'method' => 'POST',
+		) );
 
-        return $form;
-    }
+		$form->add( 'submit', 'submit', array( 'label' => 'Create' ) );
 
-    /**
-     * Displays a form to create a new Competizione entity.
-     *
-     * @Route("/new", name="competizione_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new Competizione();
-        $form   = $this->createCreateForm($entity);
+		return $form;
+	}
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
+	/**
+	 * Displays a form to create a new Competizione entity.
+	 *
+	 * @Route("/new", name="competizione_new")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function newAction() {
+		$entity = new Competizione();
+		$form   = $this->createCreateForm( $entity );
 
-    /**
-     * Finds and displays a Competizione entity.
-     *
-     * @Route("/{id}", name="competizione_show")
-     * @Method("GET")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		return array(
+			'entity' => $entity,
+			'form'   => $form->createView(),
+		);
+	}
 
-        $entity = $em->getRepository('AcmeDemoBundle:Competizione')->find($id);
+	/**
+	 * Finds and displays a Competizione entity.
+	 *
+	 * @Route("/{id}", name="competizione_show")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function showAction( $id ) {
+		$em = $this->getDoctrine()->getManager();
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Competizione entity.');
-        }
+		$entity = $em->getRepository( 'AcmeDemoBundle:Competizione' )->find( $id );
 
-        $deleteForm = $this->createDeleteForm($id);
+		if ( ! $entity ) {
+			throw $this->createNotFoundException( 'Unable to find Competizione entity.' );
+		}
 
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
+		$deleteForm = $this->createDeleteForm( $id );
 
-    /**
-     * Displays a form to edit an existing Competizione entity.
-     *
-     * @Route("/{id}/edit", name="competizione_edit")
-     * @Method("GET")
-     * @Template()
-     */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		return array(
+			'entity'      => $entity,
+			'delete_form' => $deleteForm->createView(),
+		);
+	}
 
-        $entity = $em->getRepository('AcmeDemoBundle:Competizione')->find($id);
+	/**
+	 * Displays a form to edit an existing Competizione entity.
+	 *
+	 * @Route("/{id}/edit", name="competizione_edit")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function editAction( $id ) {
+		$em = $this->getDoctrine()->getManager();
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Competizione entity.');
-        }
+		$entity = $em->getRepository( 'AcmeDemoBundle:Competizione' )->find( $id );
 
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+		if ( ! $entity ) {
+			throw $this->createNotFoundException( 'Unable to find Competizione entity.' );
+		}
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
+		$editForm   = $this->createEditForm( $entity );
+		$deleteForm = $this->createDeleteForm( $id );
 
-    /**
-    * Creates a form to edit a Competizione entity.
-    *
-    * @param Competizione $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Competizione $entity)
-    {
-        $form = $this->createForm(new CompetizioneType(), $entity, array(
-            'action' => $this->generateUrl('competizione_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
+		return array(
+			'entity'      => $entity,
+			'edit_form'   => $editForm->createView(),
+			'delete_form' => $deleteForm->createView(),
+		);
+	}
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+	/**
+	 * Creates a form to edit a Competizione entity.
+	 *
+	 * @param Competizione $entity The entity
+	 *
+	 * @return \Symfony\Component\Form\Form The form
+	 */
+	private function createEditForm( Competizione $entity ) {
+		$form = $this->createForm( new CompetizioneType(), $entity, array(
+			'action' => $this->generateUrl( 'competizione_update', array( 'id' => $entity->getId() ) ),
+			'method' => 'PUT',
+		) );
 
-        return $form;
-    }
-    /**
-     * Edits an existing Competizione entity.
-     *
-     * @Route("/{id}", name="competizione_update")
-     * @Method("PUT")
-     * @Template("AcmeDemoBundle:Competizione:edit.html.twig")
-     */
-    public function updateAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		$form->add( 'submit', 'submit', array( 'label' => 'Update' ) );
 
-        $entity = $em->getRepository('AcmeDemoBundle:Competizione')->find($id);
+		return $form;
+	}
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Competizione entity.');
-        }
+	/**
+	 * Edits an existing Competizione entity.
+	 *
+	 * @Route("/{id}", name="competizione_update")
+	 * @Method("PUT")
+	 * @Template("AcmeDemoBundle:Competizione:edit.html.twig")
+	 */
+	public function updateAction( Request $request, $id ) {
+		$em = $this->getDoctrine()->getManager();
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
+		$entity = $em->getRepository( 'AcmeDemoBundle:Competizione' )->find( $id );
 
-        if ($editForm->isValid()) {
-            $em->flush();
+		if ( ! $entity ) {
+			throw $this->createNotFoundException( 'Unable to find Competizione entity.' );
+		}
 
-            return $this->redirect($this->generateUrl('competizione_edit', array('id' => $id)));
-        }
+		$deleteForm = $this->createDeleteForm( $id );
+		$editForm   = $this->createEditForm( $entity );
+		$editForm->handleRequest( $request );
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-    /**
-     * Deletes a Competizione entity.
-     *
-     * @Route("/{id}", name="competizione_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, $id)
-    {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+		if ( $editForm->isValid() ) {
+			$em->flush();
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('AcmeDemoBundle:Competizione')->find($id);
+			return $this->redirect( $this->generateUrl( 'competizione_edit', array( 'id' => $id ) ) );
+		}
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Competizione entity.');
-            }
+		return array(
+			'entity'      => $entity,
+			'edit_form'   => $editForm->createView(),
+			'delete_form' => $deleteForm->createView(),
+		);
+	}
 
-            $em->remove($entity);
-            $em->flush();
-        }
+	/**
+	 * Deletes a Competizione entity.
+	 *
+	 * @Route("/{id}", name="competizione_delete")
+	 * @Method("DELETE")
+	 */
+	public function deleteAction( Request $request, $id ) {
+		$form = $this->createDeleteForm( $id );
+		$form->handleRequest( $request );
 
-        return $this->redirect($this->generateUrl('competizione'));
-    }
+		if ( $form->isValid() ) {
+			$em     = $this->getDoctrine()->getManager();
+			$entity = $em->getRepository( 'AcmeDemoBundle:Competizione' )->find( $id );
 
-    /**
-     * Creates a form to delete a Competizione entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('competizione_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
-    }
+			if ( ! $entity ) {
+				throw $this->createNotFoundException( 'Unable to find Competizione entity.' );
+			}
+
+			$em->remove( $entity );
+			$em->flush();
+		}
+
+		return $this->redirect( $this->generateUrl( 'competizione' ) );
+	}
+
+	/**
+	 * Creates a form to delete a Competizione entity by id.
+	 *
+	 * @param mixed $id The entity id
+	 *
+	 * @return \Symfony\Component\Form\Form The form
+	 */
+	private function createDeleteForm( $id ) {
+		return $this->createFormBuilder()
+		            ->setAction( $this->generateUrl( 'competizione_delete', array( 'id' => $id ) ) )
+		            ->setMethod( 'DELETE' )
+		            ->add( 'submit', 'submit', array( 'label' => 'Delete' ) )
+		            ->getForm();
+	}
+
+
+	/**
+	 * @Route("/crea")
+	 * @Method({"POST"})
+	 */
+	public function creaCompetizioneAction( Request $r ) {
+		$user             = $this->get( 'security.token_storage' )->getToken()->getUser();
+		$jsonCompetizione = array(
+			"nome"            => "nuova competizione",
+			"utente"          => array( "id" => $user->getId() ),
+			"tipo"            => "TORNEO",
+			"statoAttuale"    => "ATTESA",
+			"maxPartecipanti" => 10,
+			"descrizione"     => "bravo",
+			"avatar"          => "path/della/foto"
+		);
+
+		$serializer   = SerializerBuilder::create()->build();
+		$competizione = $serializer->deserialize( $jsonCompetizione, 'AcmeDemoBundle\Competizione', 'json' );
+
+		$validator = $this->get( 'validator' );
+		$errori    = $validator->validate( $competizione );
+
+		if ( count( $errori ) > 0 ) {
+			$errorsString = (string) $errori;
+
+			return new Response( $errorsString );
+		}
+
+		$em = $this->getDoctrine()->getManager();
+		$em->persist( $competizione );
+		$em->flush();
+
+		return new JsonResponse( array( "id" => $competizione->getId() ) );
+	}
+
+
+	/**
+	 * @Route("/partecipa")
+	 * @Method({"POST"})
+	 */
+	public function partecipaCompetizioneAction( Request $r ) {
+		$jsonCompetizione = array(
+			"squadra"      => array( "id" => 10 ),
+			"competizione" => array( "id" => 2 )
+		);
+
+		$serializer   = SerializerBuilder::create()->build();
+		$competizione = $serializer->deserialize( $jsonCompetizione, 'AcmeDemoBundle\CompetizioneHaSquadra', 'json' );
+
+		$validator = $this->get( 'validator' );
+		$errori    = $validator->validate( $competizione );
+
+		if ( count( $errori ) > 0 ) {
+			$errorsString = (string) $errori;
+
+			return new Response( $errorsString );
+		}
+
+		$em = $this->getDoctrine()->getManager();
+		$em->persist( $competizione );
+		$em->flush();
+
+		return new JsonResponse( array( "id" => $competizione->getId() ) );
+	}
 }

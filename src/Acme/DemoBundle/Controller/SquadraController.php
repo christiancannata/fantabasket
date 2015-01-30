@@ -15,265 +15,256 @@ use Acme\DemoBundle\Form\SquadraType;
  *
  * @Route("/squadra")
  */
-class SquadraController extends Controller
-{
+class SquadraController extends Controller {
 
-    /**
-     * Lists all Squadra entities.
-     *
-     * @Route("/", name="squadra")
-     * @Method("GET")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
+	/**
+	 * Lists all Squadra entities.
+	 *
+	 * @Route("/", name="squadra")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function indexAction() {
+		$em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AcmeDemoBundle:Squadra')->findAll();
+		$entities = $em->getRepository( 'AcmeDemoBundle:Squadra' )->findAll();
 
-        return array(
-            'entities' => $entities,
-        );
-    }
-    /**
-     * Creates a new Squadra entity.
-     *
-     * @Route("/", name="squadra_create")
-     * @Method("POST")
-     * @Template("AcmeDemoBundle:Squadra:new.html.twig")
-     */
-    public function createAction(Request $request)
-    {
-        $entity = new Squadra();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+		return array(
+			'entities' => $entities,
+		);
+	}
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+	/**
+	 * Creates a new Squadra entity.
+	 *
+	 * @Route("/", name="squadra_create")
+	 * @Method("POST")
+	 * @Template("AcmeDemoBundle:Squadra:new.html.twig")
+	 */
+	public function createAction( Request $request ) {
+		$entity = new Squadra();
+		$form   = $this->createCreateForm( $entity );
+		$form->handleRequest( $request );
 
-            return $this->redirect($this->generateUrl('squadra_show', array('id' => $entity->getId())));
-        }
+		if ( $form->isValid() ) {
+			$em = $this->getDoctrine()->getManager();
+			$em->persist( $entity );
+			$em->flush();
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
+			return $this->redirect( $this->generateUrl( 'squadra_show', array( 'id' => $entity->getId() ) ) );
+		}
 
-    /**
-     * Creates a form to create a Squadra entity.
-     *
-     * @param Squadra $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createCreateForm(Squadra $entity)
-    {
-        $form = $this->createForm(new SquadraType(), $entity, array(
-            'action' => $this->generateUrl('squadra_create'),
-            'method' => 'POST',
-        ));
+		return array(
+			'entity' => $entity,
+			'form'   => $form->createView(),
+		);
+	}
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+	/**
+	 * Creates a form to create a Squadra entity.
+	 *
+	 * @param Squadra $entity The entity
+	 *
+	 * @return \Symfony\Component\Form\Form The form
+	 */
+	private function createCreateForm( Squadra $entity ) {
+		$form = $this->createForm( new SquadraType(), $entity, array(
+			'action' => $this->generateUrl( 'squadra_create' ),
+			'method' => 'POST',
+		) );
 
-        return $form;
-    }
+		$form->add( 'submit', 'submit', array( 'label' => 'Create' ) );
 
-    /**
-     * Displays a form to create a new Squadra entity.
-     *
-     * @Route("/new", name="squadra_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new Squadra();
-        $form   = $this->createCreateForm($entity);
+		return $form;
+	}
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
+	/**
+	 * Displays a form to create a new Squadra entity.
+	 *
+	 * @Route("/new", name="squadra_new")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function newAction() {
+		$entity = new Squadra();
+		$form   = $this->createCreateForm( $entity );
 
-    /**
-     * Finds and displays a Squadra entity.
-     *
-     * @Route("/{id}", name="squadra_show")
-     * @Method("GET")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		return array(
+			'entity' => $entity,
+			'form'   => $form->createView(),
+		);
+	}
 
-        $entity = $em->getRepository('AcmeDemoBundle:Squadra')->find($id);
+	/**
+	 * Finds and displays a Squadra entity.
+	 *
+	 * @Route("/{id}", name="squadra_show")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function showAction( $id ) {
+		$em = $this->getDoctrine()->getManager();
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Squadra entity.');
-        }
+		$entity = $em->getRepository( 'AcmeDemoBundle:Squadra' )->find( $id );
 
-        $deleteForm = $this->createDeleteForm($id);
+		if ( ! $entity ) {
+			throw $this->createNotFoundException( 'Unable to find Squadra entity.' );
+		}
 
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
+		$deleteForm = $this->createDeleteForm( $id );
 
-    /**
-     * Displays a form to edit an existing Squadra entity.
-     *
-     * @Route("/{id}/edit", name="squadra_edit")
-     * @Method("GET")
-     * @Template()
-     */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		return array(
+			'entity'      => $entity,
+			'delete_form' => $deleteForm->createView(),
+		);
+	}
 
-        $entity = $em->getRepository('AcmeDemoBundle:Squadra')->find($id);
+	/**
+	 * Displays a form to edit an existing Squadra entity.
+	 *
+	 * @Route("/{id}/edit", name="squadra_edit")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function editAction( $id ) {
+		$em = $this->getDoctrine()->getManager();
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Squadra entity.');
-        }
+		$entity = $em->getRepository( 'AcmeDemoBundle:Squadra' )->find( $id );
 
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+		if ( ! $entity ) {
+			throw $this->createNotFoundException( 'Unable to find Squadra entity.' );
+		}
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
+		$editForm   = $this->createEditForm( $entity );
+		$deleteForm = $this->createDeleteForm( $id );
 
-    /**
-    * Creates a form to edit a Squadra entity.
-    *
-    * @param Squadra $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Squadra $entity)
-    {
-        $form = $this->createForm(new SquadraType(), $entity, array(
-            'action' => $this->generateUrl('squadra_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
+		return array(
+			'entity'      => $entity,
+			'edit_form'   => $editForm->createView(),
+			'delete_form' => $deleteForm->createView(),
+		);
+	}
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+	/**
+	 * Creates a form to edit a Squadra entity.
+	 *
+	 * @param Squadra $entity The entity
+	 *
+	 * @return \Symfony\Component\Form\Form The form
+	 */
+	private function createEditForm( Squadra $entity ) {
+		$form = $this->createForm( new SquadraType(), $entity, array(
+			'action' => $this->generateUrl( 'squadra_update', array( 'id' => $entity->getId() ) ),
+			'method' => 'PUT',
+		) );
 
-        return $form;
-    }
-    /**
-     * Edits an existing Squadra entity.
-     *
-     * @Route("/{id}", name="squadra_update")
-     * @Method("PUT")
-     * @Template("AcmeDemoBundle:Squadra:edit.html.twig")
-     */
-    public function updateAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		$form->add( 'submit', 'submit', array( 'label' => 'Update' ) );
 
-        $entity = $em->getRepository('AcmeDemoBundle:Squadra')->find($id);
+		return $form;
+	}
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Squadra entity.');
-        }
+	/**
+	 * Edits an existing Squadra entity.
+	 *
+	 * @Route("/{id}", name="squadra_update")
+	 * @Method("PUT")
+	 * @Template("AcmeDemoBundle:Squadra:edit.html.twig")
+	 */
+	public function updateAction( Request $request, $id ) {
+		$em = $this->getDoctrine()->getManager();
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
+		$entity = $em->getRepository( 'AcmeDemoBundle:Squadra' )->find( $id );
 
-        if ($editForm->isValid()) {
-            $em->flush();
+		if ( ! $entity ) {
+			throw $this->createNotFoundException( 'Unable to find Squadra entity.' );
+		}
 
-            return $this->redirect($this->generateUrl('squadra_edit', array('id' => $id)));
-        }
+		$deleteForm = $this->createDeleteForm( $id );
+		$editForm   = $this->createEditForm( $entity );
+		$editForm->handleRequest( $request );
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-    /**
-     * Deletes a Squadra entity.
-     *
-     * @Route("/{id}", name="squadra_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, $id)
-    {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+		if ( $editForm->isValid() ) {
+			$em->flush();
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('AcmeDemoBundle:Squadra')->find($id);
+			return $this->redirect( $this->generateUrl( 'squadra_edit', array( 'id' => $id ) ) );
+		}
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Squadra entity.');
-            }
+		return array(
+			'entity'      => $entity,
+			'edit_form'   => $editForm->createView(),
+			'delete_form' => $deleteForm->createView(),
+		);
+	}
 
-            $em->remove($entity);
-            $em->flush();
-        }
+	/**
+	 * Deletes a Squadra entity.
+	 *
+	 * @Route("/{id}", name="squadra_delete")
+	 * @Method("DELETE")
+	 */
+	public function deleteAction( Request $request, $id ) {
+		$form = $this->createDeleteForm( $id );
+		$form->handleRequest( $request );
 
-        return $this->redirect($this->generateUrl('squadra'));
-    }
+		if ( $form->isValid() ) {
+			$em     = $this->getDoctrine()->getManager();
+			$entity = $em->getRepository( 'AcmeDemoBundle:Squadra' )->find( $id );
 
-    /**
-     * Creates a form to delete a Squadra entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('squadra_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
-    }
+			if ( ! $entity ) {
+				throw $this->createNotFoundException( 'Unable to find Squadra entity.' );
+			}
+
+			$em->remove( $entity );
+			$em->flush();
+		}
+
+		return $this->redirect( $this->generateUrl( 'squadra' ) );
+	}
+
+	/**
+	 * Creates a form to delete a Squadra entity by id.
+	 *
+	 * @param mixed $id The entity id
+	 *
+	 * @return \Symfony\Component\Form\Form The form
+	 */
+	private function createDeleteForm( $id ) {
+		return $this->createFormBuilder()
+		            ->setAction( $this->generateUrl( 'squadra_delete', array( 'id' => $id ) ) )
+		            ->setMethod( 'DELETE' )
+		            ->add( 'submit', 'submit', array( 'label' => 'Delete' ) )
+		            ->getForm();
+	}
 
 
-    /**
-     * @Route("/crea")
-     * @Method({"POST"})
-     */
-    public function creaSquadraAction( Request $r ) {
-        $user        = $this->get( 'security.token_storage' )->getToken()->getUser();
-        $jsonSquadra = array(
-            "nome"   => "prova",
-            "utente" => array( "id" => $user->getId() ),
-        );
+	/**
+	 * @Route("/crea")
+	 * @Method({"POST"})
+	 */
+	public function creaSquadraAction( Request $r ) {
+		$user        = $this->get( 'security.token_storage' )->getToken()->getUser();
+		$jsonSquadra = array(
+			"nome"   => "prova",
+			"utente" => array( "id" => $user->getId() ),
+		);
 
-        $serializer = SerializerBuilder::create()->build();
-        $squadra    = $serializer->deserialize( $jsonSquadra, 'AcmeDemoBundle\Squadra', 'json' );
+		$serializer = SerializerBuilder::create()->build();
+		$squadra    = $serializer->deserialize( $jsonSquadra, 'AcmeDemoBundle\Squadra', 'json' );
 
-        $validator = $this->get( 'validator' );
-        $errori    = $validator->validate( $squadra );
+		$validator = $this->get( 'validator' );
+		$errori    = $validator->validate( $squadra );
 
-        if ( count( $errori ) > 0 ) {
-            $errorsString = (string) $errori;
+		if ( count( $errori ) > 0 ) {
+			$errorsString = (string) $errori;
 
-            return new Response( $errorsString );
-        }
+			return new Response( $errorsString );
+		}
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist( $squadra );
-        $em->flush();
+		$em = $this->getDoctrine()->getManager();
+		$em->persist( $squadra );
+		$em->flush();
 
-        return new JsonResponse( array(""));
-    }
+		return new JsonResponse( array( "id" => $squadra->getId() ) );
+	}
 
 }
