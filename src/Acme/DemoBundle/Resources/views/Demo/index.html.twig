@@ -3,28 +3,37 @@
     {% block header %}
 
 
+        {% if app.user %}
+            <div class="clearfix header-content ">
+                <h2>Ciao {{ app.user.getNome() }},</h2>
 
-
-        <div class="clearfix header-content ">
-            <h1>World sport Template</h1>
-
-            <br>
-            <a class="button green-bg"
-               href="secure_area/connect/facebook">facebook</a>
-
-            <h3>Oppure</h3>
-
-            <div class="main-login-area">
-                <ul>
-                    <li><a class="cd-signin" href="#0">Accedi</a></li>
-                    <li><a class="cd-signup" href="#0">Nuovo utente</a></li>
-                </ul>
+                <p>Accedi alla tua area riservata per gestire i tuoi campionati</p>
+                <a href="#" class="button yellow-bg">Entra nell'area riservata</a>
 
             </div>
+        {% elseif not app.user %}
+            <div class="clearfix header-content ">
+                <h1>World sport Template</h1>
+
+                <br>
+                <a class="button green-bg"
+                   href="secure_area/connect/facebook">facebook</a>
+
+                <h3>Oppure</h3>
+
+                <div class="main-login-area">
+                    <ul>
+                        <li><a class="cd-signin" href="#0">Accedi</a></li>
+                        <li><a class="cd-signup" href="#0">Nuovo utente</a></li>
+                    </ul>
+
+                </div>
 
 
+            </div>
+        {% endif %}
 
-        </div>
+
 
 
 

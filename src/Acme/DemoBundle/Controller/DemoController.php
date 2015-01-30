@@ -41,58 +41,6 @@ class DemoController extends Controller {
 	}
 
 
-	/**
-	 * @Route("/squadra/crea")
-	 * @Method({"POST"})
-	 */
-		public function creaSquadraAction( Request $r ) {
-		$user        = $this->get( 'security.token_storage' )->getToken()->getUser();
-		$jsonSquadra = array(
-			"nome"   => "prova",
-			"utente" => array( "id" => $user->getId() ),
-		);
-
-		$serializer = SerializerBuilder::create()->build();
-		$squadra    = $serializer->deserialize( $jsonSquadra, 'AcmeDemoBundle\Squadra', 'json' );
-
-		$validator = $this->get( 'validator' );
-		$errori    = $validator->validate( $squadra );
-
-		if ( count( $errori ) > 0 ) {
-			$errorsString = (string) $errori;
-
-			return new Response( $errorsString );
-		}
-
-		$em = $this->getDoctrine()->getManager();
-		$em->persist( $squadra );
-		$em->flush();
-
-		return new JsonResponse( array(""));
-	}
-
-
-	/**
-	 * @Route("/competizione/crea")
-	 * @Method({"POST"})
-	 */
-	public function creaCompetizioneAction( Request $r ) {
-
-		$serializer = SerializerBuilder::create()->build();
-		$campionato = $serializer->deserialize( $r->getContent(), 'AcmeDemoBundle\Campionato', 'json' );
-
-		$validator = $this->get( 'validator' );
-		$errori    = $validator->validate( $campionato );
-
-		if ( count( $errori ) > 0 ) {
-			$errorsString = (string) $errori;
-
-			return new Response( $errorsString );
-		}
-
-		return new Response( 'L\'autore è valido! Sì!' );
-	}
-
 
 	/**
 	 * @Route("/nuova-formazione", name="_demo_formazione")
