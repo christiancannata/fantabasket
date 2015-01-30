@@ -15,233 +15,249 @@ use Acme\DemoBundle\Form\GiocatoreType;
  *
  * @Route("/giocatore")
  */
-class GiocatoreController extends Controller
-{
+class GiocatoreController extends Controller {
 
-    /**
-     * Lists all Giocatore entities.
-     *
-     * @Route("/", name="giocatore")
-     * @Method("GET")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
+	/**
+	 * Lists all Giocatore entities.
+	 *
+	 * @Route("/", name="giocatore")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function indexAction() {
+		$em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AcmeDemoBundle:Giocatore')->findAll();
+		$entities = $em->getRepository( 'AcmeDemoBundle:Giocatore' )->findAll();
 
-        return array(
-            'entities' => $entities,
-        );
-    }
-    /**
-     * Creates a new Giocatore entity.
-     *
-     * @Route("/", name="giocatore_create")
-     * @Method("POST")
-     * @Template("AcmeDemoBundle:Giocatore:new.html.twig")
-     */
-    public function createAction(Request $request)
-    {
-        $entity = new Giocatore();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+		return array(
+			'entities' => $entities,
+		);
+	}
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+	/**
+	 * Creates a new Giocatore entity.
+	 *
+	 * @Route("/", name="giocatore_create")
+	 * @Method("POST")
+	 * @Template("AcmeDemoBundle:Giocatore:new.html.twig")
+	 */
+	public function createAction( Request $request ) {
+		$entity = new Giocatore();
+		$form   = $this->createCreateForm( $entity );
+		$form->handleRequest( $request );
 
-            return $this->redirect($this->generateUrl('giocatore_show', array('id' => $entity->getId())));
-        }
+		if ( $form->isValid() ) {
+			$em = $this->getDoctrine()->getManager();
+			$em->persist( $entity );
+			$em->flush();
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
+			return $this->redirect( $this->generateUrl( 'giocatore_show', array( 'id' => $entity->getId() ) ) );
+		}
 
-    /**
-     * Creates a form to create a Giocatore entity.
-     *
-     * @param Giocatore $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createCreateForm(Giocatore $entity)
-    {
-        $form = $this->createForm(new GiocatoreType(), $entity, array(
-            'action' => $this->generateUrl('giocatore_create'),
-            'method' => 'POST',
-        ));
+		return array(
+			'entity' => $entity,
+			'form'   => $form->createView(),
+		);
+	}
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+	/**
+	 * Creates a form to create a Giocatore entity.
+	 *
+	 * @param Giocatore $entity The entity
+	 *
+	 * @return \Symfony\Component\Form\Form The form
+	 */
+	private function createCreateForm( Giocatore $entity ) {
+		$form = $this->createForm( new GiocatoreType(), $entity, array(
+			'action' => $this->generateUrl( 'giocatore_create' ),
+			'method' => 'POST',
+		) );
 
-        return $form;
-    }
+		$form->add( 'submit', 'submit', array( 'label' => 'Create' ) );
 
-    /**
-     * Displays a form to create a new Giocatore entity.
-     *
-     * @Route("/new", name="giocatore_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new Giocatore();
-        $form   = $this->createCreateForm($entity);
+		return $form;
+	}
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
+	/**
+	 * Displays a form to create a new Giocatore entity.
+	 *
+	 * @Route("/new", name="giocatore_new")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function newAction() {
+		$entity = new Giocatore();
+		$form   = $this->createCreateForm( $entity );
 
-    /**
-     * Finds and displays a Giocatore entity.
-     *
-     * @Route("/{id}", name="giocatore_show")
-     * @Method("GET")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		return array(
+			'entity' => $entity,
+			'form'   => $form->createView(),
+		);
+	}
 
-        $entity = $em->getRepository('AcmeDemoBundle:Giocatore')->find($id);
+	/**
+	 * Finds and displays a Giocatore entity.
+	 *
+	 * @Route("/{id}", name="giocatore_show")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function showAction( $id ) {
+		$em = $this->getDoctrine()->getManager();
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Giocatore entity.');
-        }
+		$entity = $em->getRepository( 'AcmeDemoBundle:Giocatore' )->find( $id );
 
-        $deleteForm = $this->createDeleteForm($id);
+		if ( ! $entity ) {
+			throw $this->createNotFoundException( 'Unable to find Giocatore entity.' );
+		}
 
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
+		$deleteForm = $this->createDeleteForm( $id );
 
-    /**
-     * Displays a form to edit an existing Giocatore entity.
-     *
-     * @Route("/{id}/edit", name="giocatore_edit")
-     * @Method("GET")
-     * @Template()
-     */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		return array(
+			'entity'      => $entity,
+			'delete_form' => $deleteForm->createView(),
+		);
+	}
 
-        $entity = $em->getRepository('AcmeDemoBundle:Giocatore')->find($id);
+	/**
+	 * Displays a form to edit an existing Giocatore entity.
+	 *
+	 * @Route("/{id}/edit", name="giocatore_edit")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function editAction( $id ) {
+		$em = $this->getDoctrine()->getManager();
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Giocatore entity.');
-        }
+		$entity = $em->getRepository( 'AcmeDemoBundle:Giocatore' )->find( $id );
 
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+		if ( ! $entity ) {
+			throw $this->createNotFoundException( 'Unable to find Giocatore entity.' );
+		}
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
+		$editForm   = $this->createEditForm( $entity );
+		$deleteForm = $this->createDeleteForm( $id );
 
-    /**
-    * Creates a form to edit a Giocatore entity.
-    *
-    * @param Giocatore $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Giocatore $entity)
-    {
-        $form = $this->createForm(new GiocatoreType(), $entity, array(
-            'action' => $this->generateUrl('giocatore_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
+		return array(
+			'entity'      => $entity,
+			'edit_form'   => $editForm->createView(),
+			'delete_form' => $deleteForm->createView(),
+		);
+	}
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+	/**
+	 * Creates a form to edit a Giocatore entity.
+	 *
+	 * @param Giocatore $entity The entity
+	 *
+	 * @return \Symfony\Component\Form\Form The form
+	 */
+	private function createEditForm( Giocatore $entity ) {
+		$form = $this->createForm( new GiocatoreType(), $entity, array(
+			'action' => $this->generateUrl( 'giocatore_update', array( 'id' => $entity->getId() ) ),
+			'method' => 'PUT',
+		) );
 
-        return $form;
-    }
-    /**
-     * Edits an existing Giocatore entity.
-     *
-     * @Route("/{id}", name="giocatore_update")
-     * @Method("PUT")
-     * @Template("AcmeDemoBundle:Giocatore:edit.html.twig")
-     */
-    public function updateAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		$form->add( 'submit', 'submit', array( 'label' => 'Update' ) );
 
-        $entity = $em->getRepository('AcmeDemoBundle:Giocatore')->find($id);
+		return $form;
+	}
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Giocatore entity.');
-        }
+	/**
+	 * Edits an existing Giocatore entity.
+	 *
+	 * @Route("/{id}", name="giocatore_update")
+	 * @Method("PUT")
+	 * @Template("AcmeDemoBundle:Giocatore:edit.html.twig")
+	 */
+	public function updateAction( Request $request, $id ) {
+		$em = $this->getDoctrine()->getManager();
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
+		$entity = $em->getRepository( 'AcmeDemoBundle:Giocatore' )->find( $id );
 
-        if ($editForm->isValid()) {
-            $em->flush();
+		if ( ! $entity ) {
+			throw $this->createNotFoundException( 'Unable to find Giocatore entity.' );
+		}
 
-            return $this->redirect($this->generateUrl('giocatore_edit', array('id' => $id)));
-        }
+		$deleteForm = $this->createDeleteForm( $id );
+		$editForm   = $this->createEditForm( $entity );
+		$editForm->handleRequest( $request );
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-    /**
-     * Deletes a Giocatore entity.
-     *
-     * @Route("/{id}", name="giocatore_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, $id)
-    {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+		if ( $editForm->isValid() ) {
+			$em->flush();
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('AcmeDemoBundle:Giocatore')->find($id);
+			return $this->redirect( $this->generateUrl( 'giocatore_edit', array( 'id' => $id ) ) );
+		}
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Giocatore entity.');
-            }
+		return array(
+			'entity'      => $entity,
+			'edit_form'   => $editForm->createView(),
+			'delete_form' => $deleteForm->createView(),
+		);
+	}
 
-            $em->remove($entity);
-            $em->flush();
-        }
+	/**
+	 * Deletes a Giocatore entity.
+	 *
+	 * @Route("/{id}", name="giocatore_delete")
+	 * @Method("DELETE")
+	 */
+	public function deleteAction( Request $request, $id ) {
+		$form = $this->createDeleteForm( $id );
+		$form->handleRequest( $request );
 
-        return $this->redirect($this->generateUrl('giocatore'));
-    }
+		if ( $form->isValid() ) {
+			$em     = $this->getDoctrine()->getManager();
+			$entity = $em->getRepository( 'AcmeDemoBundle:Giocatore' )->find( $id );
 
-    /**
-     * Creates a form to delete a Giocatore entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('giocatore_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
-    }
+			if ( ! $entity ) {
+				throw $this->createNotFoundException( 'Unable to find Giocatore entity.' );
+			}
+
+			$em->remove( $entity );
+			$em->flush();
+		}
+
+		return $this->redirect( $this->generateUrl( 'giocatore' ) );
+	}
+
+	/**
+	 * Creates a form to delete a Giocatore entity by id.
+	 *
+	 * @param mixed $id The entity id
+	 *
+	 * @return \Symfony\Component\Form\Form The form
+	 */
+	private function createDeleteForm( $id ) {
+		return $this->createFormBuilder()
+		            ->setAction( $this->generateUrl( 'giocatore_delete', array( 'id' => $id ) ) )
+		            ->setMethod( 'DELETE' )
+		            ->add( 'submit', 'submit', array( 'label' => 'Delete' ) )
+		            ->getForm();
+	}
+
+
+	/**
+	 * @Route("/ingaggia")
+	 * @Method({"POST"})
+	 */
+	public function ingaggiaGiocatoriAction( Request $r ) {
+		$params = json_decode( $r->getContent(), true );
+
+		$serializer = SerializerBuilder::create()->build();
+		$em         = $this->getDoctrine()->getManager();
+		foreach ( $params['giocatori'] as $giocatore ) {
+			$jsonSquadra = array(
+				"giocatore" => array( "id" => $giocatore ),
+				"squadra"   => array( "id" => $params['squadra'] ),
+			);
+
+			$squadraHaGiocatore = $serializer->deserialize( $jsonSquadra, 'AcmeDemoBundle\SquadraHaGiocatore', 'json' );
+			$em->persist( $squadraHaGiocatore );
+		}
+
+		$em->flush();
+
+		return new JsonResponse( array( "" ) );
+	}
 }

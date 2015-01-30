@@ -244,4 +244,36 @@ class SquadraController extends Controller
             ->getForm()
         ;
     }
+
+
+    /**
+     * @Route("/crea")
+     * @Method({"POST"})
+     */
+    public function creaSquadraAction( Request $r ) {
+        $user        = $this->get( 'security.token_storage' )->getToken()->getUser();
+        $jsonSquadra = array(
+            "nome"   => "prova",
+            "utente" => array( "id" => $user->getId() ),
+        );
+
+        $serializer = SerializerBuilder::create()->build();
+        $squadra    = $serializer->deserialize( $jsonSquadra, 'AcmeDemoBundle\Squadra', 'json' );
+
+        $validator = $this->get( 'validator' );
+        $errori    = $validator->validate( $squadra );
+
+        if ( count( $errori ) > 0 ) {
+            $errorsString = (string) $errori;
+
+            return new Response( $errorsString );
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist( $squadra );
+        $em->flush();
+
+        return new JsonResponse( array(""));
+    }
+
 }
